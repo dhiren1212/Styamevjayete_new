@@ -19,7 +19,6 @@ import com.satyamevjayate.api.services.ContactServices;
 
 @RestController
 public class ContactController {
-	
 	@Autowired
 	private ContactServices contact_Services;
 	

@@ -19,7 +19,6 @@ import com.satyamevjayate.api.services.AddressesServices;
 
 @RestController
 public class AddressesController {
-	
 	@Autowired
 	private AddressesServices address_Services;
 	
