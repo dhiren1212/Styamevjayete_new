@@ -1,12 +1,11 @@
 package com.satyamevjayate.api.model;
 
-import java.util.List;
-
 import com.satyamevjayate.api.entity.Police;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor

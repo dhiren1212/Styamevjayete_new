@@ -23,19 +23,18 @@ public class CrimeVictim {
 
         @ManyToOne(optional=false)
         @JoinColumn(name = "AddressId")
-        private Addresses victimAddress;
-    	
-        @ManyToOne(optional=false)
-        @JoinColumn(name = "CrimeId")
-        private Crime crimeVictimCrimeID;
+        private Addresses addresses;
+
+        @Column(name = "CrimeId")
+        private Long CrimeID;
         
     	@ManyToOne(optional=false)
         @JoinColumn(name = "ContactId")
-        private Contact crimeVictimeContact;
+        private Contact contact;
     	
     	@ManyToOne(optional=false)
         @JoinColumn(name = "PersonID")
-        private Person victimPerson;
+        private Person person;
         
     	
     	@OneToMany(mappedBy = "crimeVictimDocumentID")

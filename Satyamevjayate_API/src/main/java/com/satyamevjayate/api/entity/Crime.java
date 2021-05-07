@@ -47,13 +47,13 @@ public class Crime {
     @JsonIgnore
     private List<CrimeImage> crimeImage;
     
-    @OneToMany(mappedBy = "SuspectCrimeId")
-    @JsonIgnore
-    private List<CrimeSuspect> crimeSuspect;
-    
-    @OneToMany(mappedBy = "crimeVictimCrimeID")
-    @JsonIgnore
-    private List<CrimeVictim> crimeVictim;
+//    @OneToMany(mappedBy = "SuspectCrimeId")
+//    @JsonIgnore
+//    private List<CrimeSuspect> crimeSuspect;
+//
+//    @OneToMany(mappedBy = "crimeVictimCrimeID")
+//    @JsonIgnore
+//    private List<CrimeVictim> crimeVictim;
     
    
 

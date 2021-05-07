@@ -50,7 +50,7 @@ public class Contact {
     @JsonIgnore
     private List<CrimeSuspect> crimeSuspectContact;
 	
-	@OneToMany(mappedBy = "crimeVictimeContact")
+	@OneToMany(mappedBy = "contact")
     @JsonIgnore
     private List<CrimeVictim> crimeVictimeContact;
 	

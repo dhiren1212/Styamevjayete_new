@@ -3,9 +3,9 @@ package com.satyamevjayate.api.services;
 import com.satyamevjayate.api.entity.Addresses;
 import com.satyamevjayate.api.entity.Contact;
 import com.satyamevjayate.api.entity.PoliceStation;
-import com.satyamevjayate.api.repo.Addresses_Repository;
-import com.satyamevjayate.api.repo.Contact_Repository;
-import com.satyamevjayate.api.repo.PoliceStation_Repository;
+import com.satyamevjayate.api.repo.AddressesRepository;
+import com.satyamevjayate.api.repo.ContactRepository;
+import com.satyamevjayate.api.repo.PoliceStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,13 @@ import java.util.List;
 @Service
 public class PoliceStationServices {
     @Autowired
-    private PoliceStation_Repository PoliceStation_Repo;
+    private PoliceStationRepository PoliceStation_Repo;
     
     @Autowired
-    private Addresses_Repository address_repo;
+    private AddressesRepository address_repo;
     
     @Autowired
-    private Contact_Repository contact_repo;
+    private ContactRepository contact_repo;
 
     public List<PoliceStation> listAll_PoliceStation()
     {

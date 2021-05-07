@@ -18,19 +18,18 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name="CrimeSuspect")
 public class CrimeSuspect {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeSuspectID")
     private BigInteger crimeSuspectID;
 
-    
     @ManyToOne(optional=false)
     @JoinColumn(name = "AddressId")
     private Addresses suspectAddress;
-	
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "CrimeId")
-    private Crime SuspectCrimeId;
+
+    @Column(name="CrimeID")
+    private Long CrimeId;
     
 	@ManyToOne(optional=false)
     @JoinColumn(name = "ContactId")

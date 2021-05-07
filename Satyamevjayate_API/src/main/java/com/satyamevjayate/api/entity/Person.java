@@ -47,7 +47,7 @@ public class Person {
     private List<CrimeSuspect> crimeSuspect;
     
     
-    @OneToMany(mappedBy = "victimPerson")
+    @OneToMany(mappedBy = "person")
     @JsonIgnore
     private List<CrimeVictim> crimeVictim;
     

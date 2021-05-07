@@ -15,33 +15,33 @@ import com.satyamevjayate.api.entity.Police;
 import com.satyamevjayate.api.entity.PoliceRole;
 import com.satyamevjayate.api.entity.PoliceStation;
 import com.satyamevjayate.api.model.policeModel;
-import com.satyamevjayate.api.repo.Addresses_Repository;
-import com.satyamevjayate.api.repo.Contact_Repository;
-import com.satyamevjayate.api.repo.Person_Repository;
-import com.satyamevjayate.api.repo.PoliceStation_Repository;
-import com.satyamevjayate.api.repo.Police_Repository;
-import com.satyamevjayate.api.repo.Police_Role_Repository;
+import com.satyamevjayate.api.repo.AddressesRepository;
+import com.satyamevjayate.api.repo.ContactRepository;
+import com.satyamevjayate.api.repo.PersonRepository;
+import com.satyamevjayate.api.repo.PoliceStationRepository;
+import com.satyamevjayate.api.repo.PoliceRepository;
+import com.satyamevjayate.api.repo.PoliceRoleRepository;
 
 @Service
 public class Police_Services {
 	
 	@Autowired
-	private Police_Repository police_repo;
+	private PoliceRepository police_repo;
 	
 	@Autowired
-	private Addresses_Repository address_repo;
+	private AddressesRepository address_repo;
 	
 	@Autowired
-	private Contact_Repository contact_repo;
+	private ContactRepository contact_repo;
 	
 	@Autowired
-	private Person_Repository person_repo;
+	private PersonRepository person_repo;
 	
 	@Autowired
-	private Police_Role_Repository policerole_repo;
+	private PoliceRoleRepository policerole_repo;
 	
 	@Autowired
-	private PoliceStation_Repository policestation_repo;
+	private PoliceStationRepository policestation_repo;
 	
 	
 	public List<Police> listAllPolice()

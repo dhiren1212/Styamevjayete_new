@@ -63,7 +63,7 @@ public class Addresses {
     @JsonIgnore
     private List<CrimeSuspect> crimeSuspect;
 	
-	@OneToMany(mappedBy = "victimAddress")
+	@OneToMany(mappedBy = "addresses")
     @JsonIgnore
     private List<CrimeVictim> crimeVictime;
 	
