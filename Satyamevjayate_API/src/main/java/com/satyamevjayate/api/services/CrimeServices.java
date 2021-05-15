@@ -21,38 +21,18 @@ public class CrimeServices {
     private AddressesRepository address_repo;
     
     @Autowired
-    private CrimeTypeRepository crimetype_repo;
+    private CrimeTypeRepository crimeTypeRepository;
 
     public List<Crime> listAllCrime()
     {
         return Crime_repo.findAll();
     }
 
-    public Crime saveCrime(Crime Crime)
+    public Crime saveCrime(Crime crime)
     {
-//    	 Addresses address = address_repo.findById(Crime.getCrmaddress().getAddressID()).orElse(null);
-//	        if (null == address) {
-	          
-	           Addresses address = new Addresses();
-//	        }
-	        address.setAddressLine1(Crime.getCrimeAddress().getAddressLine1());
-	        address.setAddressLine2(Crime.getCrimeAddress().getAddressLine2());
-	        address.setCity(Crime.getCrimeAddress().getCity());
-	        address.setCountry(Crime.getCrimeAddress().getCountry());
-	        address.setState(Crime.getCrimeAddress().getState());
-	        address.setZipcode(Crime.getCrimeAddress().getZipcode());
-	        address_repo.save(address);
-	        Crime.setCrimeAddress(address);
-//    	System.out.println(Crime.getCrmtype().getCrimeTypeId());
-//	      CrimeType crimetype = crimetype_repo.findById(Crime.getCrmtype().getCrimeTypeId()).orElse(new CrimeType());
-//	        if (null == crimetype) {
-	           CrimeType crimetype = new CrimeType();
-//	        }
-//	           crimetype.setCrimeType(Crime.getCrmtype().getCrimeType());
-	        crimetype.setCrimeType(Crime.getCrimeType().getCrimeType());
-	        crimetype_repo.save(crimetype);
-	        Crime.setCrimeType(crimetype);
-	        return Crime_repo.save(Crime);
+            address_repo.save(crime.getCrimeAddress());
+            crimeTypeRepository.save(crime.getCrimeType());
+	        return Crime_repo.save(crime);
     }
 
     public Crime getCrime(BigInteger Id)

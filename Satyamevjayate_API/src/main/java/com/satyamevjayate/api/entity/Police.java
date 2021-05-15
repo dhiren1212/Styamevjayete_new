@@ -3,18 +3,7 @@ package com.satyamevjayate.api.entity;
 import java.math.BigInteger;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,10 +28,14 @@ public class Police {
 	
 	@Column(name="PoliceCardImage")
 	private Byte[] policeCardImage;
-	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "AddressID")
-    private Addresses policeAddress;
+
+	@OneToOne(optional=false)
+	@JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
+	private Addresses policeResidentAddress;
+
+	@OneToOne(optional=false)
+	@JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
+	private Addresses policePermanentAddress;
 	
 	@ManyToOne(optional=false)
     @JoinColumn(name = "RoleID")

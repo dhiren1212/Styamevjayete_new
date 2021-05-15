@@ -26,15 +26,15 @@ public class Criminal {
 //    private Long ContactID;
 //    @Column(name = "AddressID")
 //    private Long AddressID;
-    
-    
-    
-    
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "AddressID")
-    private Addresses criminalAddress;
-	
+
+    @OneToOne(optional=false)
+    @JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
+    private Addresses criminalResidentAddress;
+
+    @OneToOne(optional=false)
+    @JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
+    private Addresses criminalPermanentAddress;
+
 	@ManyToOne(optional=false)
     @JoinColumn(name = "ContactID")
     private Contact criminalContact;
@@ -42,8 +42,7 @@ public class Criminal {
 	@ManyToOne(optional=false)
     @JoinColumn(name = "PersonID")
     private Person criminalPerson;
-	
-	
+
 	@OneToOne(mappedBy = "criminalDocument")
     @JsonIgnore
     private CriminalDocument criminalDocument;

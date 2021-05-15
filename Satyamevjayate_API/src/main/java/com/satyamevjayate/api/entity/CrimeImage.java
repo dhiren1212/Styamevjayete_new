@@ -14,7 +14,7 @@ import java.math.BigInteger;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="crimeimage")
-public class CrimeImage {
+public class  CrimeImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeImageID")

@@ -20,24 +20,24 @@ import com.satyamevjayate.api.services.ContactServices;
 @RestController
 public class ContactController {
 	@Autowired
-	private ContactServices contact_Services;
+	private ContactServices contactServices;
 	
 	@GetMapping("/contact")
 	public List<Contact> getAllContact() {
-		return contact_Services.listAllContact();
+		return contactServices.listAllContact();
 	}
 	
 	@GetMapping("/contact/{id}")
 	public Contact getAddresses(@PathVariable BigInteger id)
 	{
-		Contact contact= contact_Services.getContact(id);
+		Contact contact= contactServices.getContact(id);
 		return contact;
 	}
 	
 	@PostMapping("/contact")
 	public String addContact(@RequestBody Contact contact)
 	{
-		contact_Services.saveContact(contact);;
+		contactServices.saveContact(contact);;
 		return "Contact Add Successfully";
 	}	
 	
@@ -45,18 +45,15 @@ public class ContactController {
 	@DeleteMapping("/contact/{id}")
 	public String deleteContact(@PathVariable BigInteger id)
 	{
-		contact_Services.deleteContact(id);
+		contactServices.deleteContact(id);
 	    return "Delete Contact Successfully";
 	}
 	
 	@PutMapping("/contact/{id}")
 	public ResponseEntity<Object> editContact(@RequestBody Contact contact, @PathVariable BigInteger id) {
-
-		
-
 		contact.setContactId(id);;
 		
-		contact_Services.saveContact(contact);
+		contactServices.saveContact(contact);
 
 		return ResponseEntity.noContent().build();
 	}

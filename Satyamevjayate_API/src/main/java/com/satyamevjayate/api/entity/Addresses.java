@@ -49,12 +49,15 @@ public class Addresses {
 	
 	@Column(name="Country")
 	private String country;
-	
-	
-	@OneToOne(mappedBy = "policeAddress")
-    @JsonIgnore
-    private Police policeAddress;
-	
+
+	@OneToOne(mappedBy = "policeResidentAddress")
+	@JsonIgnore
+	private Police policeResidentAddress;
+
+	@OneToOne(mappedBy = "policePermanentAddress")
+	@JsonIgnore
+	private Police policePermanentAddress;
+
 	@OneToOne(mappedBy = "crimeAddress")
     @JsonIgnore
     private Crime crimeAddress;
@@ -68,17 +71,25 @@ public class Addresses {
     private List<CrimeVictim> crimeVictime;
 	
 	
-	@OneToOne(mappedBy = "criminalAddress")
+	@OneToOne(mappedBy = "criminalResidentAddress")
     @JsonIgnore
-    private Criminal criminalAddress;
+    private Criminal criminalResidentAddress;
+
+	@OneToOne(mappedBy = "criminalPermanentAddress")
+	@JsonIgnore
+	private Criminal criminalPermanentAddress;
 	
 	@OneToOne(mappedBy = "policeStationAddress")
     @JsonIgnore
     private PoliceStation policeStationAddress;
-	
-	@OneToOne(mappedBy = "workerAddress")
-    @JsonIgnore
-    private Worker workerAddress;
+
+	@OneToOne(mappedBy = "workerResidentAddress")
+	@JsonIgnore
+	private Worker workerResidentAddress;
+
+	@OneToOne(mappedBy = "workerPermanentAddress")
+	@JsonIgnore
+	private Worker workerPermanentAddress;
 	
 	
 

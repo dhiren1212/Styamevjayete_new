@@ -46,7 +46,7 @@ public class CriminalController {
 
         Criminal.setCriminalID(id);
 
-        Criminal_Service.editCriminal(Criminal);
+//        Criminal_Service.editCriminal(Criminal);
 
         return ResponseEntity.noContent().build();
     }

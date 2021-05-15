@@ -27,10 +27,14 @@ public class Worker {
     @Column(name="DateOfResign")
     private Date dateOfResign;
 
-    
+
     @OneToOne(optional=false)
-    @JoinColumn( name = "AddressID")
-    private Addresses workerAddress;
+    @JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
+    private Addresses workerResidentAddress;
+
+    @OneToOne(optional=false)
+    @JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
+    private Addresses workerPermanentAddress;
 	
 	@OneToOne(optional=false)
     @JoinColumn( name = "ContactID")
