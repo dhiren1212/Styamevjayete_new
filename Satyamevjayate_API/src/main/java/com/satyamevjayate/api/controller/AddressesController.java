@@ -28,37 +28,31 @@ public class AddressesController {
 	}
 	
 	@GetMapping("/address/{id}")
-	public Addresses getAddresses(@PathVariable BigInteger id)
+	public Addresses getAddresses(@PathVariable Long id)
 	{
 		Addresses address= address_Services.getAddress(id);
 		return address;
 	}
 	
 	@PostMapping("/address")
-	public String addAddress(@RequestBody Addresses address)
+	public Long addAddress(@RequestBody Addresses address)
 	{
-		address_Services.saveAddress(address);
-		return "Address Add Successfully";
+		Long id= address_Services.saveAddress(address);
+		return id;
 	}	
 	
 	
 	@DeleteMapping("/address/{id}")
-	public String deleteAddress(@PathVariable BigInteger id)
+	public String deleteAddress(@PathVariable Long id)
 	{
 		address_Services.deleteAddress(id);
 	    return "Delete Address Successfully";
 	}
 	
 	@PutMapping("/address/{id}")
-	public ResponseEntity<Object> editAddress(@RequestBody Addresses address, @PathVariable BigInteger id) {
-
-	
-
-		address.setAddressID(id);;
-		
-		address_Services.saveAddress(address);
-
-		return ResponseEntity.noContent().build();
+	public Long editAddress(@RequestBody Addresses address, @PathVariable Long id) {
+		Long addressId= address_Services.saveAddress(address);
+		return addressId;
 	}
 	
 

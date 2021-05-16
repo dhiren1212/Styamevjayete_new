@@ -7,52 +7,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 @RestController
 public class CrimeVictimController {
     @Autowired
-    private CrimeVictimServices CrimeVictimServices;
+    private CrimeVictimServices crimeVictimServices;
 
     @GetMapping("/crimevictim")
     public List<CrimeVictim> getAllCrimeVictim() {
-        return CrimeVictimServices.listAllCrimeVictim();
+        return crimeVictimServices.listAllCrimeVictim();
     }
 
     @GetMapping("/crimevictim/{id}")
-    public Crimevictimmodel getCrimeVictim(@PathVariable BigInteger id)
+    public Crimevictimmodel getCrimeVictim(@PathVariable Long id)
     {
 
-        Crimevictimmodel CrimeVictim= CrimeVictimServices.getCrimeVictim(id);
+        Crimevictimmodel CrimeVictim= crimeVictimServices.getCrimeVictim(id);
         return CrimeVictim;
-
-
-
     }
 
     @PostMapping("/crimevictim")
-    public String addCrimeVictim(@RequestBody CrimeVictim CrimeVictim)
+    public Long addCrimeVictim(@RequestBody CrimeVictim crimeVictim)
     {
 
-        CrimeVictimServices.saveCrimeVictim(CrimeVictim);;
-        return "CrimeVictim Add Successfully";
+        Long crimeVictimId= crimeVictimServices.saveCrimeVictim(crimeVictim);
+        return crimeVictimId;
+
     }
 
 
     @DeleteMapping("/crimevictim/{id}")
-    public String deleteCrimeVictim(@PathVariable BigInteger id)
+    public String deleteCrimeVictim(@PathVariable Long id)
     {
-        String res= CrimeVictimServices.deleteCrimeVictim(id);;
+        String res= crimeVictimServices.deleteCrimeVictim(id);;
         return res;
     }
 
     @PutMapping("/crimevictim/{id}")
-    public ResponseEntity<Object> editCrimeVictim(@RequestBody CrimeVictim CrimeVictim, @PathVariable BigInteger id) {
+    public Long editCrimeVictim(@RequestBody CrimeVictim crimeVictim, @PathVariable Long id) {
 
-        CrimeVictim.setCrimeVictimID(id);
+        crimeVictim.setCrimeVictimID(id);
 
-        CrimeVictimServices.saveCrimeVictim(CrimeVictim);
+        Long crimeVictimId= crimeVictimServices.saveCrimeVictim(crimeVictim);
+        return crimeVictimId;
 
-        return ResponseEntity.noContent().build();
     }
 }

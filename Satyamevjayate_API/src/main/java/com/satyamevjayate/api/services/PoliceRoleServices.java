@@ -1,6 +1,5 @@
 package com.satyamevjayate.api.services;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +12,32 @@ import com.satyamevjayate.api.repo.PoliceRoleRepository;
 public class PoliceRoleServices {
 	
 	@Autowired
-	private PoliceRoleRepository Police_Role_Repo;
+	private PoliceRoleRepository policeRoleRepository;
 	
-	public List<PoliceRole> listAll_Police_Role()
+	public List<PoliceRole> listAllPoliceRole()
 	{
-		return Police_Role_Repo.findAll();
+		return policeRoleRepository.findAll();
 	}
 	
-	public void save_Police_Role(PoliceRole police_role)
+	public Long savePoliceRole(PoliceRole policerole)
 	{
-		Police_Role_Repo.save(police_role);
+		policeRoleRepository.save(policerole);
+		return policerole.getRoleID();
 	}
 	
-	public PoliceRole getPolice_Role(BigInteger Id)
+	public PoliceRole getPoliceRole(Long Id)
 	{
-		return Police_Role_Repo.findById(Id).get();
+		return policeRoleRepository.findById(Id).get();
 	}
 	
-	public void delete_Police_Role(BigInteger Id)
+	public void delete_PoliceRole(Long Id)
 	{
-		Police_Role_Repo.deleteById(Id);
+		policeRoleRepository.deleteById(Id);
 	}
-	
-	
+	public Long editPoliceRole(PoliceRole policerole,Long id)
+	{
+		policeRoleRepository.save(policerole);
+		return id;
+	}
 
 }

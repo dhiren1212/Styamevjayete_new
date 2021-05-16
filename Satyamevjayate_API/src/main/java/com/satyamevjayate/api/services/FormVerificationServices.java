@@ -16,18 +16,24 @@ public class FormVerificationServices {
         return FormVerification_repo.findAll();
     }
 
-    public void saveFormVerification(Formverification FormVerification)
+    public Long saveFormVerification(Formverification formverification)
     {
-        FormVerification_repo.save(FormVerification);
+        FormVerification_repo.save(formverification);
+        return formverification.getFormVerifiactionID();
     }
 
-    public Formverification getFormVerification(BigInteger Id)
+    public Formverification getFormVerification(Long Id)
     {
         return FormVerification_repo.findById(Id).get();
     }
 
-    public void deleteFormVerification(BigInteger Id)
+    public void deleteFormVerification(Long Id)
     {
         FormVerification_repo.deleteById(Id);
+    }
+    public Long updateFormVerification(Formverification formverification,Long Id)
+    {
+        FormVerification_repo.save(formverification);
+        return Id;
     }
 }

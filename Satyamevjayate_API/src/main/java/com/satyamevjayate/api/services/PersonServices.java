@@ -18,18 +18,25 @@ public class PersonServices {
         return person_repository.findAll();
     }
 
-    public void savePerson(Person Person)
+    public Long savePerson(Person person)
     {
-        person_repository.save(Person);
+        person_repository.save(person);
+        return person.getPersonId();
     }
 
-    public Person getPerson(BigInteger Id)
+    public Person getPerson(Long Id)
     {
         return person_repository.findById(Id).get();
     }
 
-    public void deletePerson(BigInteger Id)
+    public void deletePerson(Long Id)
     {
         person_repository.deleteById(Id);
     }
+    public Long updatePerson(Person person)
+    {
+        person_repository.save(person);
+        return person.getPersonId();
+    }
+
 }

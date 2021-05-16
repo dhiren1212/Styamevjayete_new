@@ -8,6 +8,6 @@ import com.satyamevjayate.api.entity.PoliceRole;
 
 
 
-public interface PoliceRoleRepository extends JpaRepository<PoliceRole, BigInteger> {
+public interface PoliceRoleRepository extends JpaRepository<PoliceRole, Long> {
 
 }

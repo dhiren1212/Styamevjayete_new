@@ -12,27 +12,34 @@ import com.satyamevjayate.api.repo.LawActRepository;
 @Service
 public class LawActServices {
 	@Autowired
-	private LawActRepository LawAct_Repo;
+	private LawActRepository LawActRepo;
 	
-      public List<LawAct> listAll_LawAct()
+      public List<LawAct> listAllLawAct()
       {
-    	  return LawAct_Repo.findAll();
+    	  return LawActRepo.findAll();
       }
       
-      public void save_LawAct(LawAct lawact)
+      public Long saveLawAct(LawAct lawact)
       {
-    	  LawAct_Repo.save(lawact);
+    	  LawActRepo.save(lawact);
+    	  return lawact.getLawID();
       }
       
-      public LawAct get_Lawact(BigInteger Id) 
+      public LawAct getLawact(Long Id)
       {
-    	  return LawAct_Repo.findById(Id).get();
+    	  return LawActRepo.findById(Id).get();
       }
       
-      public void  delete_Lawact(BigInteger Id) 
+      public void  deleteLawact(Long Id)
       {
-    	   LawAct_Repo.deleteById(Id);
+    	   LawActRepo.deleteById(Id);
       }
-      
+
+    public Long updateLawAct(LawAct lawact,Long id)
+    {
+        LawActRepo.save(lawact);
+        return id;
+    }
+
 
 }

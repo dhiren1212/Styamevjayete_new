@@ -1,10 +1,6 @@
 package com.satyamevjayate.api.services;
 
-import com.satyamevjayate.api.entity.Addresses;
-import com.satyamevjayate.api.entity.Contact;
 import com.satyamevjayate.api.entity.PoliceStation;
-import com.satyamevjayate.api.repo.AddressesRepository;
-import com.satyamevjayate.api.repo.ContactRepository;
 import com.satyamevjayate.api.repo.PoliceStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,53 +10,34 @@ import java.util.List;
 @Service
 public class PoliceStationServices {
     @Autowired
-    private PoliceStationRepository PoliceStation_Repo;
-    
-    @Autowired
-    private AddressesRepository address_repo;
-    
-    @Autowired
-    private ContactRepository contact_repo;
+    private PoliceStationRepository policeStationRepository;
 
-    public List<PoliceStation> listAll_PoliceStation()
+    public List<PoliceStation> listAllPoliceStation()
     {
-        System.out.println(PoliceStation_Repo.findAll());
-        return PoliceStation_Repo.findAll();
+        System.out.println(policeStationRepository.findAll());
+        return policeStationRepository.findAll();
     }
 
-    public PoliceStation save_PoliceStation(PoliceStation PoliceStation)
+    public Long savePoliceStation(PoliceStation policeStation)
     {
-    	 Addresses address = address_repo.findById(PoliceStation.getPoliceStationAddress().getAddressID()).orElse(null);
-	        if (null == address) {
-	            address = new Addresses();
-	        }
-	        address.setAddressLine1(PoliceStation.getPoliceStationAddress().getAddressLine1());
-	        address.setAddressLine2(PoliceStation.getPoliceStationAddress().getAddressLine2());
-	        address.setCity(PoliceStation.getPoliceStationAddress().getCity());
-	        address.setCountry(PoliceStation.getPoliceStationAddress().getCountry());
-	        address.setState(PoliceStation.getPoliceStationAddress().getState());
-	        address.setZipcode(PoliceStation.getPoliceStationAddress().getZipcode());
-	        PoliceStation.setPoliceStationAddress(address);
-	        
-	    Contact contact=contact_repo.findById(PoliceStation.getPoliceStationContact().getContactId()).orElse(null);
-	    	if(null==contact)
-	    	{
-	    		contact=new Contact();
-	    	}
-	    	contact.setContactNumber(PoliceStation.getPoliceStationContact().getContactNumber());
-		    contact.setContactEmail(PoliceStation.getPoliceStationContact().getContactEmail());
-		    PoliceStation.setPoliceStationContact(contact);
-       return PoliceStation_Repo.save(PoliceStation);
+    	 policeStationRepository.save(policeStation);
+    	 return policeStation.getPoliceStationID();
     }
 
-    public PoliceStation getPoliceStation(BigInteger Id)
+    public PoliceStation getPoliceStation(Long Id)
     {
-        return PoliceStation_Repo.findById(Id).get();
+        return policeStationRepository.findById(Id).get();
     }
 
-    public void delete_PoliceStation(BigInteger Id)
+    public void deletePoliceStation(Long Id)
     {
-        PoliceStation_Repo.deleteById(Id);
+        policeStationRepository.deleteById(Id);
     }
+    public Long updatePoliceStation(PoliceStation policeStation,Long id)
+    {
+        policeStationRepository.save(policeStation);
+        return id;
+    }
+
 
 }

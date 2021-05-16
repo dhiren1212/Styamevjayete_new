@@ -15,7 +15,7 @@ public class PoliceStationController {
 
     @GetMapping("/GetAllPoliceStation")
     public List<PoliceStation> getAllPolice_Role() {
-        return PoliceStationService.listAll_PoliceStation();
+        return PoliceStationService.listAllPoliceStation();
     }
 
     @GetMapping("/GetPoliceStation/{id}")
@@ -28,7 +28,7 @@ public class PoliceStationController {
     @PostMapping("/AddPoliceStation")
     public String addPoliceStation(@RequestBody PoliceStation p)
     {
-        PoliceStationService.save_PoliceStation(p);
+        PoliceStationService.savePoliceStation(p);
         return "PoliceStation Add successfully";
 
     }
@@ -36,7 +36,7 @@ public class PoliceStationController {
     @DeleteMapping("/DeletePoliceStation/{id}")
     public String deletePoliceStation(@PathVariable BigInteger id)
     {
-        PoliceStationService.delete_PoliceStation(id);
+        PoliceStationService.deletePoliceStation(id);
         return "PoliceStation Delete successfully";
     }
 
@@ -46,7 +46,7 @@ public class PoliceStationController {
 
         PoliceStation.setPoliceStationID(id);
 
-        PoliceStationService.save_PoliceStation(PoliceStation);
+        PoliceStationService.savePoliceStation(PoliceStation);
 
         return ResponseEntity.noContent().build();
     }

@@ -6,23 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 @RestController
 public class CrimeImageController {
     @Autowired
-    private CrimeImageServices CrimeImageServices;
+    private CrimeImageServices crimeImageServices;
 
     @GetMapping("/crimeImage")
     public List<CrimeImage> getAllCrimeImage() {
-        return CrimeImageServices.listAllCrimeImage();
+        return crimeImageServices.listAllCrimeImage();
     }
 
     @GetMapping("/crimeImage/{id}")
-    public CrimeImage getCrimeImage(@PathVariable BigInteger id)
+    public CrimeImage getCrimeImage(@PathVariable Long id)
     {
 
-        CrimeImage CrimeImage= CrimeImageServices.getCrimeImage(id);
+        CrimeImage CrimeImage= crimeImageServices.getCrimeImage(id);
         return CrimeImage;
 
 
@@ -30,27 +29,25 @@ public class CrimeImageController {
     }
 
     @PostMapping("/crimeImage")
-    public String addCrimeImage(@RequestBody CrimeImage CrimeImage)
+    public Long addCrimeImage(@RequestBody CrimeImage crimeImage)
     {
-        CrimeImageServices.saveCrimeImage(CrimeImage);;
-        return "CrimeImage Add Successfully";
+        Long id= crimeImageServices.saveCrimeImage(crimeImage);;
+        return id;
     }
 
 
     @DeleteMapping("/crimeImage/{id}")
-    public String deleteCrimeImage(@PathVariable BigInteger id)
+    public String deleteCrimeImage(@PathVariable Long id)
     {
-        CrimeImageServices.deleteCrimeImage(id);;
+        crimeImageServices.deleteCrimeImage(id);;
         return "Delete CrimeImage Successfully";
     }
 
     @PutMapping("/crimeImage/{id}")
-    public ResponseEntity<Object> editCrimeImage(@RequestBody CrimeImage CrimeImage, @PathVariable BigInteger id) {
+    public Long editCrimeImage(@RequestBody CrimeImage CrimeImage, @PathVariable Long id) {
 
-        CrimeImage.setCrimeImageID(id);
+        Long crimeImageId= crimeImageServices.saveCrimeImage(CrimeImage);
 
-        CrimeImageServices.saveCrimeImage(CrimeImage);
-
-        return ResponseEntity.noContent().build();
+        return crimeImageId;
     }
 }

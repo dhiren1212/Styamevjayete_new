@@ -24,34 +24,19 @@ import java.util.Optional;
 public class CrimeSuspectServices {
     @Autowired
     private CrimeSuspectRepository CrimeSuspect_repo;
-    
-    @Autowired
-    private AddressesRepository address_repo;
-    
-    @Autowired
-    private ContactRepository contact_repo;
-    
-    @Autowired
-    private PersonRepository person_repo;
-    
-    @Autowired
-    private CrimeRepository crime_repo;
-    
 
     public List<CrimeSuspect> listAllCrimeSuspect()
     {
         return CrimeSuspect_repo.findAll();
     }
 
-    public CrimeSuspect saveCrimeSuspect(CrimeSuspect CrimeSuspect)
+    public Long saveCrimeSuspect(CrimeSuspect crimeSuspect)
     {
-		address_repo.save(CrimeSuspect.getSuspectAddress());
-		contact_repo.save(CrimeSuspect.getSuspectContact());
-		person_repo.save(CrimeSuspect.getSuspectPerson());
-		return CrimeSuspect_repo.save(CrimeSuspect);
+    	CrimeSuspect_repo.save(crimeSuspect);
+		return crimeSuspect.getCrimeSuspectID();
     }
 
-    public Crimesuspectmodel getCrimeSuspect(BigInteger Id)
+    public Crimesuspectmodel getCrimeSuspect(Long Id)
     {
 
 		Crimesuspectmodel crimesuspectmodel	=new Crimesuspectmodel();
@@ -69,7 +54,7 @@ public class CrimeSuspectServices {
 		return crimesuspectmodel;
     }
 
-    public String deleteCrimeSuspect(BigInteger Id)
+    public String deleteCrimeSuspect(Long Id)
     {
     	String res;
 		if(CrimeSuspect_repo.findById(Id).isPresent()){
@@ -81,4 +66,9 @@ public class CrimeSuspectServices {
 		}
 		return res;
     }
+	public Long updateCrimeSuspect(CrimeSuspect crimeSuspect ,Long Id)
+	{
+		return Id;
+	}
+
 }

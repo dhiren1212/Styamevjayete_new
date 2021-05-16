@@ -4,7 +4,6 @@ import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,44 +20,42 @@ import com.satyamevjayate.api.services.PrisoningTypeServices;
 public class PrisoningTypeController {
 	
 	@Autowired
-	private PrisoningTypeServices prisoningtype_services;
+	private PrisoningTypeServices prisoningTypeServices;
 	
 	@GetMapping("/prisoningtype")
 	public List<PrisoningType> getAllPrisoningType() {
-		return prisoningtype_services.listAllPrisoningType();
+		return prisoningTypeServices.listAllPrisoningType();
 	}
 	
 	@GetMapping("/prisoningtype/{id}")
-	public PrisoningType getPrisoningType(@PathVariable BigInteger id)
+	public PrisoningType getPrisoningType(@PathVariable Long id)
 	{
-		PrisoningType p= prisoningtype_services.getPrisoningType(id);
+		PrisoningType p= prisoningTypeServices.getPrisoningType(id);
 		return p;
 	}
 	
 	@PostMapping("/prisoningtype")
-	public String addPrisoningType(@RequestBody PrisoningType p)
+	public Long addPrisoningType(@RequestBody PrisoningType prisoningType)
 	{
-		prisoningtype_services.savePrisoningType(p);
-		return "PrisoningType Add successfully";
+		Long prisoningtypeId= prisoningTypeServices.savePrisoningType(prisoningType);
+
+		return prisoningtypeId;
 		
 	}
 	
 	@DeleteMapping("/prisoningtype/{id}")
-	public String deletePrisoningType(@PathVariable BigInteger id)
+	public String deletePrisoningType(@PathVariable Long id)
 	{
-		prisoningtype_services.deletePrisoningType(id);
+		prisoningTypeServices.deletePrisoningType(id);
 		return "PrisoningType Delete successfully";
 	}
 	
 	@PutMapping("/prisoningtype/{id}")
-	public ResponseEntity<Object> editPrisoningType(@RequestBody PrisoningType prisoningtype, @PathVariable BigInteger id) {
+	public Long editPrisoningType(@RequestBody PrisoningType prisoningtype, @PathVariable Long id) {
 
-		
-		prisoningtype.setRisoningTypeId(id);
-		
-		prisoningtype_services.savePrisoningType(prisoningtype);
+		Long prisoningtypeId= prisoningTypeServices.savePrisoningType(prisoningtype);
 
-		return ResponseEntity.noContent().build();
+		return prisoningtypeId;
 	}
 	
 

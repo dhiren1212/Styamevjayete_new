@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.satyamevjayate.api.entity.Contact;
 
-public interface ContactRepository extends JpaRepository<Contact,BigInteger> {
+public interface ContactRepository extends JpaRepository<Contact,Long> {
 
 }

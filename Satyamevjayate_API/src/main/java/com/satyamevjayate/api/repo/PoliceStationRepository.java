@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface PoliceStationRepository extends JpaRepository<PoliceStation, BigInteger> {
+public interface PoliceStationRepository extends JpaRepository<PoliceStation, Long> {
 }

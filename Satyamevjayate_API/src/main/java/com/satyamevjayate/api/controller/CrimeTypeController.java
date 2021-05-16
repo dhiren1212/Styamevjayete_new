@@ -21,47 +21,43 @@ import com.satyamevjayate.api.services.CrimeTypeServices;
 public class CrimeTypeController {
 
 	@Autowired
-	private CrimeTypeServices crimetype_Services;
+	private CrimeTypeServices crimeTypeServices;
 	
 	@GetMapping("/crimetype")
 	public List<CrimeType> getAllCrimeType() {
-		return crimetype_Services.listAllCrimeType();
+		return crimeTypeServices.listAllCrimeType();
 	}
 	
 	@GetMapping("/crimetype/{id}")
-	public CrimeType getCrimeType(@PathVariable BigInteger id)
+	public CrimeType getCrimeType(@PathVariable Long id)
 	{
 		
-			CrimeType crimetype= crimetype_Services.getCrimeType(id);
+			CrimeType crimetype= crimeTypeServices.getCrimeType(id);
 			return crimetype;
-	
-		
-		
 	}
 	
 	@PostMapping("/crimetype")
-	public String addCrimeType(@RequestBody CrimeType crimetype)
+	public Long addCrimeType(@RequestBody CrimeType crimetype)
 	{
-		crimetype_Services.saveCrimeType(crimetype);;
-		return "CrimeType Add Successfully";
+		Long crimeTypeId=crimeTypeServices.saveCrimeType(crimetype);
+
+		return crimeTypeId;
 	}	
 	
 	
 	@DeleteMapping("/crimetype/{id}")
-	public String deleteCrimeType(@PathVariable BigInteger id)
+	public String deleteCrimeType(@PathVariable Long id)
 	{
-		crimetype_Services.deleteCrimeType(id);;
+		crimeTypeServices.deleteCrimeType(id);;
 	    return "Delete CrimeType Successfully";
 	}
 	
 	@PutMapping("/crimetype/{id}")
-	public ResponseEntity<Object> editCrimeType(@RequestBody CrimeType crimetype, @PathVariable BigInteger id) {
+	public Long editCrimeType(@RequestBody CrimeType crimetype, @PathVariable Long id) {
 
-		crimetype.setCrimeTypeId(id);
-		
-		crimetype_Services.saveCrimeType(crimetype);
+		Long crimeTypeId=crimeTypeServices.saveCrimeType(crimetype);
 
-		return ResponseEntity.noContent().build();
+		return crimeTypeId;
 	}
 
 }

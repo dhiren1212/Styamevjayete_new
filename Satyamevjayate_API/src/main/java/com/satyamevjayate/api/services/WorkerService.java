@@ -17,75 +17,30 @@ import java.util.List;
 public class WorkerService {
     @Autowired
     private WorkerRepository Worker_repo;
-    
-    @Autowired
-    private AddressesRepository address_repo;
-    
-    @Autowired
-    private ContactRepository contact_repo;
-    
-    @Autowired
-    private PersonRepository person_repo;
-    
+
 
     public List<Worker> listAllWorker()
     {
         return Worker_repo.findAll();
     }
 
-    public Worker saveWorker(Worker worker)
+    public Long saveWorker(Worker worker)
     {
-        address_repo.save(worker.getWorkerResidentAddress());
-        address_repo.save(worker.getWorkerPermanentAddress());
-        contact_repo.save(worker.getWorkerContact());
-        person_repo.save(worker.getWorkerPerson());
-       return Worker_repo.save(worker);
+        Worker_repo.save(worker);
+        return worker.getWorkerID();
     }
-    public Worker editWorker(Worker worker)
+    public Long editWorker(Worker worker)
     {
-//    	Addresses address = address_repo.findById(worker.getWorkerAddress().getAddressID()).orElse(null);
-//        if (null == address) {
-//        	   address = new Addresses();
-//        }
-//        address.setAddressLine1(worker.getWorkerAddress().getAddressLine1());
-//        address.setAddressLine2(worker.getWorkerAddress().getAddressLine2());
-//        address.setCity(worker.getWorkerAddress().getCity());
-//        address.setCountry(worker.getWorkerAddress().getCountry());
-//        address.setState(worker.getWorkerAddress().getState());
-//        address.setZipcode(worker.getWorkerAddress().getZipcode());
-//
-//        worker.setWorkerAddress(address);
-//
-//    Contact contact=contact_repo.findById(worker.getWorkerContact().getContactId()).orElse(null);
-//    	if(null==contact)
-//    	{
-//    		contact=new Contact();
-//    	}
-//    	contact.setContactNumber(worker.getWorkerContact().getContactNumber());
-//	    contact.setContactEmail(worker.getWorkerContact().getContactEmail());
-//
-//	    worker.setWorkerContact(contact);
-//
-//	Person person = person_repo.findById(worker.getWorkerPerson().getPersonId()).orElse(null);
-//        if (null == person) {
-//        	 person = new Person();
-//        }
-//        person.setFirstName(worker.getWorkerPerson().getFirstName());
-//        person.setLastName(worker.getWorkerPerson().getLastName());
-//        person.setGender(worker.getWorkerPerson().getGender());
-//        person.setDateOfBirth(worker.getWorkerPerson().getDateOfBirth());
-//        person.setPersonImage(worker.getWorkerPerson().getPersonImage());
-//        worker.setWorkerPerson(person);
-//
-       return Worker_repo.save(worker);
+        Worker_repo.save(worker);
+        return worker.getWorkerID();
     }
 
-    public Worker getWorker(BigInteger Id)
+    public Worker getWorker(Long Id)
     {
         return Worker_repo.findById(Id).get();
     }
 
-    public void deleteWorker(BigInteger Id)
+    public void deleteWorker(Long Id)
     {
         Worker_repo.deleteById(Id);
     }

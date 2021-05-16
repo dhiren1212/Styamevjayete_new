@@ -21,33 +21,19 @@ import java.util.Optional;
 public class CrimeVictimServices {
     @Autowired
     private CrimeVictimRepository CrimeVictim_repo;
-    
-    @Autowired
-    private AddressesRepository address_repo;
-    
-    @Autowired
-    private ContactRepository contact_repo;
-    
-    @Autowired
-    private PersonRepository person_repo;
-    
-    @Autowired
-    private CrimeRepository crime_repo;
 
     public List<CrimeVictim> listAllCrimeVictim()
     {
         return CrimeVictim_repo.findAll();
     }
 
-    public CrimeVictim saveCrimeVictim(CrimeVictim CrimeVictim)
+    public Long saveCrimeVictim(CrimeVictim crimeVictim)
     {
-		address_repo.save(CrimeVictim.getAddresses());
-		contact_repo.save(CrimeVictim.getContact());
-		person_repo.save(CrimeVictim.getPerson());
-        return CrimeVictim_repo.save(CrimeVictim);
+        CrimeVictim_repo.save(crimeVictim);
+        return crimeVictim.getCrimeVictimID();
     }
 
-    public Crimevictimmodel getCrimeVictim(BigInteger Id)
+    public Crimevictimmodel getCrimeVictim(Long Id)
     {
         Crimevictimmodel crimevictimmodel	=new Crimevictimmodel();
         Optional<CrimeVictim> crimevictim=CrimeVictim_repo.findById(Id);
@@ -64,7 +50,7 @@ public class CrimeVictimServices {
         return crimevictimmodel;
     }
 
-    public String deleteCrimeVictim(BigInteger Id)
+    public String deleteCrimeVictim(Long Id)
     {
         String res;
         if(CrimeVictim_repo.findById(Id).isPresent()){
@@ -75,5 +61,10 @@ public class CrimeVictimServices {
             res="Record with "+Id+" id Does not exists!!";
         }
         return res;
+    }
+    public Long updateCrimeVictim(CrimeVictim crimeVictim)
+    {
+        CrimeVictim_repo.save(crimeVictim);
+        return crimeVictim.getCrimeVictimID();
     }
 }

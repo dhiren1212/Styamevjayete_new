@@ -21,19 +21,26 @@ public class AddressesServices {
 		return Address_repo.findAll();
 	}
 	
-	public void saveAddress(Addresses address)
+	public Long saveAddress(Addresses address)
 	{
 		Address_repo.save(address);
+		return  address.getAddressID();
 	}
 	
-	public Addresses getAddress(BigInteger Id)
+	public Addresses getAddress(Long Id)
 	{
 		return Address_repo.findById(Id).get();
 	}
 	
-	public void deleteAddress(BigInteger Id)
+	public void deleteAddress(Long Id)
 	{
 		Address_repo.deleteById(Id);
+	}
+
+	public Long saveAddress(Addresses address,Long addressId)
+	{
+//		Address_repo.save(address);
+		return  address.getAddressID();
 	}
 
 }

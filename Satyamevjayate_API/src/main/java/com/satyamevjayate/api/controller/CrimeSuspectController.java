@@ -4,56 +4,49 @@ import com.satyamevjayate.api.entity.CrimeSuspect;
 import com.satyamevjayate.api.model.Crimesuspectmodel;
 import com.satyamevjayate.api.services.CrimeSuspectServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController
 public class CrimeSuspectController {
     @Autowired
-private CrimeSuspectServices CrimeSuspectServices;
+private CrimeSuspectServices crimeSuspectServices;
 
     @GetMapping("/crimesuspect")
     public List<CrimeSuspect> getAllCrimeSuspect() {
-        return CrimeSuspectServices.listAllCrimeSuspect();
+        return crimeSuspectServices.listAllCrimeSuspect();
     }
 
     @GetMapping("/crimesuspect/{id}")
-    public Crimesuspectmodel getCrimeSuspect(@PathVariable BigInteger id)
+    public Crimesuspectmodel getCrimeSuspect(@PathVariable Long id)
     {
 
-        Crimesuspectmodel CrimeSuspect= CrimeSuspectServices.getCrimeSuspect(id);
+        Crimesuspectmodel CrimeSuspect= crimeSuspectServices.getCrimeSuspect(id);
         return CrimeSuspect;
-
-
 
     }
 
     @PostMapping("/crimesuspect")
-    public String addCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect)
+    public Long addCrimeSuspect(@RequestBody CrimeSuspect crimeSuspect)
     {
-        CrimeSuspectServices.saveCrimeSuspect(CrimeSuspect);;
-        return "CrimeSuspect Add Successfully";
+        Long id= crimeSuspectServices.saveCrimeSuspect(crimeSuspect);
+        return id;
     }
 
 
     @DeleteMapping("/crimesuspect/{id}")
-    public String deleteCrimeSuspect(@PathVariable BigInteger id)
+    public String deleteCrimeSuspect(@PathVariable Long id)
     {
-        String res= CrimeSuspectServices.deleteCrimeSuspect(id);
+        String res= crimeSuspectServices.deleteCrimeSuspect(id);
         return res;
     }
 
     @PutMapping("/crimesuspect/{id}")
-    public String  editCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect, @PathVariable BigInteger id) {
+    public Long  editCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect, @PathVariable Long id) {
 
-        CrimeSuspect.setCrimeSuspectID(id);
+        Long crimeSuspectID=crimeSuspectServices.saveCrimeSuspect(CrimeSuspect);
 
-        CrimeSuspectServices.saveCrimeSuspect(CrimeSuspect);
-
-        return "CrimeSuspect Edit Successfully";
+        return crimeSuspectID;
     }
 
 }

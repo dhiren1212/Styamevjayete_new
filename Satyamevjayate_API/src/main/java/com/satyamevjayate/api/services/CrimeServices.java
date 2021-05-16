@@ -28,21 +28,25 @@ public class CrimeServices {
         return Crime_repo.findAll();
     }
 
-    public Crime saveCrime(Crime crime)
+    public Long saveCrime(Crime crime)
     {
-            address_repo.save(crime.getCrimeAddress());
-            crimeTypeRepository.save(crime.getCrimeType());
-	        return Crime_repo.save(crime);
+        Crime_repo.save(crime);
+        return  crime.getCrimeID();
     }
 
-    public Crime getCrime(BigInteger Id)
+    public Crime getCrime(Long Id)
     {
         return Crime_repo.findById(Id).get();
     }
 
-    public void deleteCrime(BigInteger Id)
+    public void deleteCrime(Long Id)
     {
         Crime_repo.deleteById(Id);
     }
 
+    public Long updateCrime(Crime crime,Long crimeId)
+    {
+        Crime_repo.save(crime);
+        return  crimeId;
+    }
 }

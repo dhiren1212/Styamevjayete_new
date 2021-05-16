@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.satyamevjayate.api.entity.Addresses;
 
-public interface AddressesRepository extends JpaRepository<Addresses, BigInteger> {
+public interface AddressesRepository extends JpaRepository<Addresses, Long> {
 
 }

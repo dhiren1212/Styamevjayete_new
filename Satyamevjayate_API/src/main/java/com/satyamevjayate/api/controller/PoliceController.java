@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.satyamevjayate.api.entity.Police;
 import com.satyamevjayate.api.model.policeModel;
 import com.satyamevjayate.api.repo.AddressesRepository;
-import com.satyamevjayate.api.services.Police_Services;
+import com.satyamevjayate.api.services.PoliceServices;
 
 
 @RestController
@@ -24,46 +24,44 @@ import com.satyamevjayate.api.services.Police_Services;
 public class PoliceController {
 	
 	@Autowired
-	private Police_Services police_services;
+	private PoliceServices policeServices;
 	
 	@Autowired
 	private AddressesRepository address_repo;
 	
 	 @PostMapping("/polices")
-	 public String savePolice(@RequestBody Police police)
+	 public Long savePolice(@RequestBody Police police)
 	 {
-	 
-	     police_services.savePolice(police);
-	     return "police inserted";
+		 Long policeId= policeServices.savePolice(police);
+
+		 return policeId;
 	 }
 	
 	@GetMapping("/polices")
 	public List<Police> findAllPolice()
 	{
-		 return police_services.listAllPolice();
+		 return policeServices.listAllPolice();
 	}
 	
 	@GetMapping("/polices/{id}")
-	public policeModel getPolice(@PathVariable BigInteger id)
+	public policeModel getPolice(@PathVariable Long id)
 	{
-	     policeModel policemodel= police_services.getPolice(id);
+	     policeModel policemodel= policeServices.getPolice(id);
 	     return policemodel;
 	}
 	
 	@PutMapping("/polices/{id}")
-	public ResponseEntity<Object> editPolice(@RequestBody Police police, @PathVariable BigInteger id) 
+	public Long editPolice(@RequestBody Police police, @PathVariable Long id)
 	{
 
-	     police.setPoliceID(id);
+	    Long policeId= policeServices.editPolice(police,id);
 
-	     police_services.editPolice(police);
-
-	     return ResponseEntity.noContent().build();
+	     return policeId;
 	}
 	@DeleteMapping("/polices/{id}")
-    public String deletePolice(@PathVariable BigInteger id)
+    public String deletePolice(@PathVariable Long id)
     {
-        police_services.deletePolice(id);
+        policeServices.deletePolice(id);
         return "Delete Person Successfully";
     }
 

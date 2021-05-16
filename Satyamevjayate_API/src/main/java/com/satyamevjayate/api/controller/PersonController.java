@@ -11,35 +11,34 @@ import java.util.List;
 @RestController
 public class PersonController {
     @Autowired
-    private PersonServices PersonServices;
+    private PersonServices personServices;
     @GetMapping("/GetAllPerson")
     public List<Person> getAllPerson() {
-        return PersonServices.listAllPerson();
+        return personServices.listAllPerson();
     }
     @GetMapping("/GetPerson/{id}")
-    public Person getPerson(@PathVariable BigInteger id)
+    public Person getPerson(@PathVariable Long id)
     {
-        Person Person= PersonServices.getPerson(id);
-        return Person;
+        Person person = personServices.getPerson(id);
+        return person;
     }
     @PostMapping("/AddPerson")
-    public String addPerson(@RequestBody Person Person)
+    public String addPerson(@RequestBody Person person)
     {
-        PersonServices.savePerson(Person);;
+        personServices.savePerson(person);;
         return "Person Add Successfully";
     }
     @DeleteMapping("/DeletePerson/{id}")
-    public String deletePerson(@PathVariable BigInteger id)
+    public String deletePerson(@PathVariable Long id)
     {
-        PersonServices.deletePerson(id);
+        personServices.deletePerson(id);
         return "Delete Person Successfully";
     }
 
     @PutMapping("/EditPerson/{id}")
-    public ResponseEntity<Object> editPerson(@RequestBody Person Person, @PathVariable BigInteger id) {
-        Person.setPersonId(id);;
-        PersonServices.savePerson(Person);
-        return ResponseEntity.noContent().build();
+    public Long editPerson(@RequestBody Person person, @PathVariable Long id) {
+       Long personId=personServices.savePerson(person);
+        return personId;
     }
 
 }

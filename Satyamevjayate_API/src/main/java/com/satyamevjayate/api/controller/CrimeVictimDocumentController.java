@@ -11,18 +11,18 @@ import java.util.List;
 
 public class CrimeVictimDocumentController {
     @Autowired
-    private CrimeVictimDocumentService crimeVictimDocument_Services;
+    private CrimeVictimDocumentService crimeVictimDocumentService;
 
     @GetMapping("/crimevictimdocument")
     public List<CrimeVictimDocument> getAllCrimeVictimDocument() {
-        return crimeVictimDocument_Services.listAllCrimeVictimDocument();
+        return crimeVictimDocumentService.listAllCrimeVictimDocument();
     }
 
     @GetMapping("/crimevictimdocument/{id}")
-    public CrimeVictimDocument getCrimeVictimDocument(@PathVariable BigInteger id)
+    public CrimeVictimDocument getCrimeVictimDocument(@PathVariable Long id)
     {
 
-        CrimeVictimDocument CrimeVictimDocument= crimeVictimDocument_Services.getCrimeVictimDocument(id);
+        CrimeVictimDocument CrimeVictimDocument= crimeVictimDocumentService.getCrimeVictimDocument(id);
         return CrimeVictimDocument;
 
 
@@ -30,27 +30,25 @@ public class CrimeVictimDocumentController {
     }
 
     @PostMapping("/crimevictimdocument")
-    public String addCrimeVictimDocument(@RequestBody CrimeVictimDocument CrimeVictimDocument)
+    public Long addCrimeVictimDocument(@RequestBody CrimeVictimDocument crimeVictimDocument)
     {
-        crimeVictimDocument_Services.saveCrimeVictimDocument(CrimeVictimDocument);;
-        return "CrimeVictimDocument Add Successfully";
+       Long id=  crimeVictimDocumentService.saveCrimeVictimDocument(crimeVictimDocument);;
+        return id;
     }
 
 
     @DeleteMapping("/crimevictimdocument/{id}")
-    public String deleteCrimeVictimDocument(@PathVariable BigInteger id)
+    public String deleteCrimeVictimDocument(@PathVariable Long id)
     {
-        crimeVictimDocument_Services.deleteCrimeVictimDocument(id);;
+        crimeVictimDocumentService.deleteCrimeVictimDocument(id);;
         return "Delete CrimeVictimDocument Successfully";
     }
 
     @PutMapping("/crimevictimdocument/{id}")
-    public ResponseEntity<Object> editCrimeVictimDocument(@RequestBody CrimeVictimDocument CrimeVictimDocument, @PathVariable BigInteger id) {
+    public Long editCrimeVictimDocument(@RequestBody CrimeVictimDocument CrimeVictimDocument, @PathVariable BigInteger id) {
 
-        CrimeVictimDocument.setDocumentID(id);
+        Long crimeVictimDocumentid= crimeVictimDocumentService.saveCrimeVictimDocument(CrimeVictimDocument);
 
-        crimeVictimDocument_Services.saveCrimeVictimDocument(CrimeVictimDocument);
-
-        return ResponseEntity.noContent().build();
+        return crimeVictimDocumentid;
     }
 }

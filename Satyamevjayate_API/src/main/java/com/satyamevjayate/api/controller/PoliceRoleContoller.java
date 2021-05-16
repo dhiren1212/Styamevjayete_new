@@ -46,7 +46,7 @@ public class PoliceRoleContoller {
 	@DeleteMapping("/policerole/{id}")
 	public String deletePoliceRole(@PathVariable BigInteger id)
 	{
-		Police_Role_Service.delete_Police_Role(id);
+		Police_Role_Service.delete_PoliceRole(id);
 		return "PoliceRole Delete successfully";
 	}
 	

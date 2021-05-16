@@ -11,44 +11,43 @@ import java.util.List;
 @RestController
 public class WorkerController {
     @Autowired
-    private WorkerService WorkerService;
+    private WorkerService workerService;
 
     @GetMapping("/worker")
     public List<Worker> getAllWorker() {
-        return WorkerService.listAllWorker();
+        return workerService.listAllWorker();
     }
 
     @GetMapping("/worker/{id}")
-    public Worker getWorker(@PathVariable BigInteger id)
+    public Worker getWorker(@PathVariable Long id)
     {
-        Worker w= WorkerService.getWorker(id);
+        Worker w= workerService.getWorker(id);
         return w;
     }
 
     @PostMapping("/worker")
-    public String addWorker(@RequestBody Worker w)
+    public Long addWorker(@RequestBody Worker w)
     {
-        WorkerService.saveWorker(w);
-        return "Worker Add successfully";
+        Long workerID= workerService.editWorker(w);
+
+        return workerID;
 
     }
 
     @DeleteMapping("/worker/{id}")
-    public String deleteWorker(@PathVariable BigInteger id)
+    public String deleteWorker(@PathVariable Long id)
     {
-        WorkerService.deleteWorker(id);
+        workerService.deleteWorker(id);
         return "Worker Delete successfully";
     }
 
     @PutMapping("/worker/{id}")
-    public ResponseEntity<Object> editWorker(@RequestBody Worker Worker, @PathVariable BigInteger id) {
+    public Long  editWorker(@RequestBody Worker Worker, @PathVariable Long id) {
 
 
-        Worker.setWorkerID(id);
+        Long workerID= workerService.editWorker(Worker);
 
-        WorkerService.editWorker(Worker);
-
-        return ResponseEntity.noContent().build();
+        return workerID;
     }
 
 }

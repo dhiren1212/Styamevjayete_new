@@ -12,18 +12,18 @@ import java.util.List;
 @RestController
 public class CriminalDocumentController {
     @Autowired
-    private CriminalDocumentservices CriminalDocument_Services;
+    private CriminalDocumentservices criminalDocumentservices;
 
     @GetMapping("/criminaldocument")
     public List<CriminalDocument> getAllCriminalDocument() {
-        return CriminalDocument_Services.listAllCriminalDocument();
+        return criminalDocumentservices.listAllCriminalDocument();
     }
 
     @GetMapping("/criminaldocument/{id}")
     public CriminalDocument getCriminalDocument(@PathVariable Long id)
     {
 
-        CriminalDocument CriminalDocument= CriminalDocument_Services.getCriminalDocument(id);
+        CriminalDocument CriminalDocument= criminalDocumentservices.getCriminalDocument(id);
         return CriminalDocument;
 
 
@@ -31,26 +31,26 @@ public class CriminalDocumentController {
     }
 
     @PostMapping("/criminaldocument")
-    public String addCriminalDocument(@RequestBody CriminalDocument CriminalDocument)
+    public Long addCriminalDocument(@RequestBody CriminalDocument CriminalDocument)
     {
-        CriminalDocument_Services.saveCriminalDocument(CriminalDocument);;
-        return "CriminalDocument Add Successfully";
+        Long documentID= criminalDocumentservices.saveCriminalDocument(CriminalDocument);
+
+        return documentID;
     }
 
 
     @DeleteMapping("/criminaldocument/{id}")
     public String deleteCriminalDocument(@PathVariable Long id)
     {
-        CriminalDocument_Services.deleteCriminalDocument(id);;
+        criminalDocumentservices.deleteCriminalDocument(id);;
         return "Delete CriminalDocument Successfully";
     }
 
     @PutMapping("/criminaldocument/{id}")
-    public ResponseEntity<Object> editCriminalDocument(@RequestBody CriminalDocument CriminalDocument, @PathVariable Long id) {
+    public Long editCriminalDocument(@RequestBody CriminalDocument CriminalDocument, @PathVariable Long id) {
 
-        CriminalDocument.setDocumentID(id);
-        CriminalDocument_Services.saveCriminalDocument(CriminalDocument);
+        Long documentID= criminalDocumentservices.saveCriminalDocument(CriminalDocument);
 
-        return ResponseEntity.noContent().build();
+        return documentID;
     }
 }

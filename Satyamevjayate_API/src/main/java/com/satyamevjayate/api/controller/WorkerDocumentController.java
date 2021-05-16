@@ -11,18 +11,18 @@ import java.util.List;
 @RestController
 public class WorkerDocumentController {
     @Autowired
-    private WorkerDocumentServices WorkerDocumentServices;
+    private WorkerDocumentServices workerDocumentServices;
 
     @GetMapping("/workerdocument")
     public List<WorkerDocument> getAllWorkerDocument() {
-        return WorkerDocumentServices.listAllWorkerDocument();
+        return workerDocumentServices.listAllWorkerDocument();
     }
 
     @GetMapping("/workerdocument/{id}")
     public WorkerDocument getWorkerDocument(@PathVariable Long id)
     {
 
-        WorkerDocument WorkerDocument= WorkerDocumentServices.getWorkerDocument(id);
+        WorkerDocument WorkerDocument= workerDocumentServices.getWorkerDocument(id);
         return WorkerDocument;
 
 
@@ -32,7 +32,7 @@ public class WorkerDocumentController {
     @PostMapping("/workerdocument")
     public String addWorkerDocument(@RequestBody WorkerDocument WorkerDocument)
     {
-        WorkerDocumentServices.saveWorkerDocument(WorkerDocument);
+        workerDocumentServices.saveWorkerDocument(WorkerDocument);
         return "WorkerDocument Add Successfully";
     }
 
@@ -40,16 +40,15 @@ public class WorkerDocumentController {
     @DeleteMapping("/workerdocument/{id}")
     public String deleteWorkerDocument(@PathVariable Long id)
     {
-        WorkerDocumentServices.deleteWorkerDocument(id);;
+        workerDocumentServices.deleteWorkerDocument(id);;
         return "Delete WorkerDocument Successfully";
     }
 
     @PutMapping("/workerdocument/{id}")
-    public ResponseEntity<Object> editWorkerDocument(@RequestBody WorkerDocument WorkerDocument, @PathVariable Long id) {
+    public Long editWorkerDocument(@RequestBody WorkerDocument WorkerDocument, @PathVariable Long id) {
 
-//        WorkerDocument.set
-        WorkerDocumentServices.saveWorkerDocument(WorkerDocument);
+       Long workerDocumentId=workerDocumentServices.saveWorkerDocument(WorkerDocument);
 
-        return ResponseEntity.noContent().build();
+        return workerDocumentId;
     }
 }

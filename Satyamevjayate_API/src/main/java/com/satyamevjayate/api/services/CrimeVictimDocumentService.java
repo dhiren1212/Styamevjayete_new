@@ -13,33 +13,31 @@ import java.util.List;
 public class CrimeVictimDocumentService {
     @Autowired
     private CrimeVictimDocumentRepository CrimeVictimDocument_repo;
-    
-    @Autowired
-    private CrimeVictimRepository CrimeVictim_repo;
 
     public List<CrimeVictimDocument> listAllCrimeVictimDocument()
     {
         return CrimeVictimDocument_repo.findAll();
     }
 
-    public CrimeVictimDocument saveCrimeVictimDocument(CrimeVictimDocument CrimeVictimDocument)
+    public Long saveCrimeVictimDocument(CrimeVictimDocument crimeVictimDocument)
     {
-    	CrimeVictim crimevictim = CrimeVictim_repo.findById(CrimeVictimDocument.getCrimeVictimDocumentID().getCrimeVictimID()).orElse(null);
-        if (null == crimevictim) {
-        	crimevictim = new CrimeVictim();
-        }
-        crimevictim.setCrimeVictimID(CrimeVictimDocument.getCrimeVictimDocumentID().getCrimeVictimID());
-        CrimeVictimDocument.setCrimeVictimDocumentID(crimevictim);
-        return CrimeVictimDocument_repo.save(CrimeVictimDocument);
+         CrimeVictimDocument_repo.save(crimeVictimDocument);
+        return crimeVictimDocument.getCrimeVictimDocumentID();
     }
 
-    public CrimeVictimDocument getCrimeVictimDocument(BigInteger Id)
+    public CrimeVictimDocument getCrimeVictimDocument(Long Id)
     {
         return CrimeVictimDocument_repo.findById(Id).get();
     }
 
-    public void deleteCrimeVictimDocument(BigInteger Id)
+    public void deleteCrimeVictimDocument(Long Id)
     {
         CrimeVictimDocument_repo.deleteById(Id);
+    }
+
+    public Long updateCrimeVictimDocument(CrimeVictimDocument crimeVictimDocument)
+    {
+        CrimeVictimDocument_repo.save(crimeVictimDocument);
+        return crimeVictimDocument.getCrimeVictimDocumentID();
     }
 }

@@ -6,51 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController
 public class CrimeController {
     @Autowired
-    private CrimeServices Crime_Services;
+    private CrimeServices crimeServices;
 
     @GetMapping("/crime")
     public List<Crime> getAllCrime() {
-        return Crime_Services.listAllCrime();
+        return crimeServices.listAllCrime();
     }
 
     @GetMapping("/crime/{id}")
-    public Crime getCrime(@PathVariable BigInteger id)
+    public Crime getCrime(@PathVariable Long id)
     {
 
-        Crime Crime= Crime_Services.getCrime(id);
+        Crime Crime= crimeServices.getCrime(id);
         return Crime;
 
     }
 
     @PostMapping("/crime")
-    public String addCrime(@RequestBody Crime Crime)
+    public Long addCrime(@RequestBody Crime Crime)
     {
-        Crime_Services.saveCrime(Crime);;
-        return "Crime Add Successfully";
+        Long id= crimeServices.saveCrime(Crime);;
+        return id;
+
     }
 
 
     @DeleteMapping("/crime/{id}")
-    public String deleteCrime(@PathVariable BigInteger id)
+    public String deleteCrime(@PathVariable Long id)
     {
-        Crime_Services.deleteCrime(id);;
+        crimeServices.deleteCrime(id);;
         return "Delete Crime Successfully";
     }
 
     @PutMapping("/crime/{id}")
-    public ResponseEntity<Object> editCrime(@RequestBody Crime Crime, @PathVariable BigInteger id) {
-
-        Crime.setCrimeID(id);
-
-        Crime_Services.saveCrime(Crime);
-
-        return ResponseEntity.noContent().build();
+    public Long editCrime(@RequestBody Crime Crime, @PathVariable Long id) {
+        Long crimeID= crimeServices.saveCrime(Crime);;
+        return crimeID;
     }
 
 }

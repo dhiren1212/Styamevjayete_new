@@ -22,43 +22,42 @@ import com.satyamevjayate.api.services.LawActServices;
 public class LawActContoller {
 	
 	@Autowired
-	private LawActServices LawAct_Service;
+	private LawActServices lawActServices;
 	
 	@GetMapping("/LawActs")
 	public List<LawAct> lawActs()
 	{
-		return LawAct_Service.listAll_LawAct();
+		return lawActServices.listAllLawAct();
 	}
 	
 	@GetMapping("/LawAct/{id}")
-	public LawAct getLawAct(@PathVariable BigInteger id)
+	public LawAct getLawAct(@PathVariable Long id)
 	{
-		LawAct l =LawAct_Service.get_Lawact(id);
+		LawAct l = lawActServices.getLawact(id);
 		return l;
 				
 	}
 	
 	@PostMapping("/LawAct")
-	public String addLawact(@RequestBody LawAct l)
+	public Long addLawact(@RequestBody LawAct lawAct)
 	{
-		LawAct_Service.save_LawAct(l);
-		return "LawAct Add successfully";
+		Long lawID=lawActServices.saveLawAct(lawAct);
+		return lawID;
 	}
 	
 	@DeleteMapping("/DeleteLawAct/{id}")
-	public String deleteLawAct(@PathVariable BigInteger id)
+	public String deleteLawAct(@PathVariable Long id)
 	{
-		LawAct_Service.delete_Lawact(id);
+		lawActServices.deleteLawact(id);
 		return "LawAct Delete successfully";
 		
 	}
 	
 	@PutMapping("/EditLawAct/{id}")
-	public ResponseEntity<Object> editLawAct(@RequestBody LawAct lawact , @PathVariable BigInteger id)
+	public Long editLawAct(@RequestBody LawAct lawact , @PathVariable Long id)
 	{
-		lawact.setLawID(id);
-		LawAct_Service.save_LawAct(lawact);
-		return ResponseEntity.noContent().build();
+		Long lawID=lawActServices.saveLawAct(lawact);
+		return lawID;
 	}
 	
 	

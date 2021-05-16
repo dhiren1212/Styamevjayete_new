@@ -11,24 +11,24 @@ import java.util.List;
 @RestController
 public class CriminalController {
     @Autowired
-    private CriminalServices Criminal_Service;
+    private CriminalServices criminalServices;
 
     @GetMapping("/criminal")
     public List<Criminal> getAllCriminal() {
-        return Criminal_Service.listAllCriminal();
+        return criminalServices.listAllCriminal();
     }
 
     @GetMapping("/criminal/{id}")
     public Criminal getCriminal(@PathVariable Long id)
     {
-        Criminal w= Criminal_Service.getCriminal(id);
+        Criminal w= criminalServices.getCriminal(id);
         return w;
     }
 
     @PostMapping("/criminal")
     public String addCriminal(@RequestBody Criminal w)
     {
-        Criminal_Service.saveCriminal(w);
+        criminalServices.saveCriminal(w);
         return "Criminal Add successfully";
 
     }
@@ -36,27 +36,17 @@ public class CriminalController {
     @DeleteMapping("/criminal/{id}")
     public String deleteCriminal(@PathVariable Long id)
     {
-        Criminal_Service.deleteCriminal(id);
+        criminalServices.deleteCriminal(id);
         return "Criminal Delete successfully";
     }
 
     @PutMapping("/criminal/{id}")
-    public ResponseEntity<Object> editCriminal(@RequestBody Criminal Criminal, @PathVariable Long id) {
+    public Long editCriminal(@RequestBody Criminal criminal, @PathVariable Long id) {
 
 
-        Criminal.setCriminalID(id);
+        Long criminalId=criminalServices.editCriminal(criminal,id);
 
-//        Criminal_Service.editCriminal(Criminal);
-
-        return ResponseEntity.noContent().build();
+        return criminalId;
     }
-    
-//    @PutMapping("/criminal")
-//    public ResponseEntity<Object> editCriminal(@RequestBody Criminal Criminal) {
-//
-//        Criminal_Service.saveCriminal(Criminal);
-//
-//        return ResponseEntity.noContent().build();
-//    }
 
 }

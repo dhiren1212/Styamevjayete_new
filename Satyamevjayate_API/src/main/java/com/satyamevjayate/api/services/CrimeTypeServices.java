@@ -21,22 +21,27 @@ public class CrimeTypeServices {
 		return crimetype_repo.findAll();
 	}
 	
-	public void saveCrimeType(CrimeType crimetype)
+	public Long saveCrimeType(CrimeType crimetype)
 	{
 		crimetype_repo.save(crimetype);
+		return crimetype.getCrimeTypeId();
 	}
 	
-	public CrimeType getCrimeType(BigInteger Id)
+	public CrimeType getCrimeType(Long Id)
 	{
 		return crimetype_repo.findById(Id).get();
 	}
 	
-	public void deleteCrimeType(BigInteger Id)
+	public void deleteCrimeType(Long Id)
 	{
 		crimetype_repo.deleteById(Id);
 	}
-	
-	
-	
+
+	public Long updateCrimeType(CrimeType crimetype,Long Id)
+	{
+		crimetype_repo.save(crimetype);
+		return Id;
+	}
+
 
 }

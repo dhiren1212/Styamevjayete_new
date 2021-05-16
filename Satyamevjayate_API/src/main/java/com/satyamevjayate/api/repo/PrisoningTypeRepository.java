@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.satyamevjayate.api.entity.PrisoningType;
 
-public interface PrisoningTypeRepository extends JpaRepository<PrisoningType, BigInteger> {
+public interface PrisoningTypeRepository extends JpaRepository<PrisoningType, Long> {
 
 }

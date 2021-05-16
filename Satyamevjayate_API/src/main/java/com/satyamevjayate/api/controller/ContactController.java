@@ -28,34 +28,32 @@ public class ContactController {
 	}
 	
 	@GetMapping("/contact/{id}")
-	public Contact getAddresses(@PathVariable BigInteger id)
+	public Contact getAddresses(@PathVariable Long id)
 	{
 		Contact contact= contactServices.getContact(id);
 		return contact;
 	}
 	
 	@PostMapping("/contact")
-	public String addContact(@RequestBody Contact contact)
+	public Long addContact(@RequestBody Contact contact)
 	{
-		contactServices.saveContact(contact);;
-		return "Contact Add Successfully";
+		Long id= contactServices.saveContact(contact);;
+		return id;
 	}	
 	
 	
 	@DeleteMapping("/contact/{id}")
-	public String deleteContact(@PathVariable BigInteger id)
+	public String deleteContact(@PathVariable Long id)
 	{
 		contactServices.deleteContact(id);
 	    return "Delete Contact Successfully";
 	}
 	
 	@PutMapping("/contact/{id}")
-	public ResponseEntity<Object> editContact(@RequestBody Contact contact, @PathVariable BigInteger id) {
-		contact.setContactId(id);;
-		
-		contactServices.saveContact(contact);
+	public Long editContact(@RequestBody Contact contact, @PathVariable Long id) {
 
-		return ResponseEntity.noContent().build();
+		Long contactId= contactServices.saveContact(contact);;
+		return contactId;
 	}
 	
 

@@ -24,25 +24,31 @@ public class CrimeImageServices {
         return CrimeImage_repo.findAll();
     }
 
-    public CrimeImage saveCrimeImage(CrimeImage CrimeImage)
+    public Long saveCrimeImage(CrimeImage crimeImage)
     {
-    	 Crime crime = crime_repo.findById(CrimeImage.getImageCrimeId().getCrimeID()).orElse(null);
-	        if (null == crime) {
-	            crime = new Crime();
-	        }
-	        crime.setCrimeID(CrimeImage.getImageCrimeId().getCrimeID());
-	        CrimeImage.setImageCrimeId(crime);
-	       
-	     return CrimeImage_repo.save(CrimeImage);
+//    	 Crime crime = crime_repo.findById(CrimeImage.getImageCrimeId().getCrimeID()).orElse(null);
+//	        if (null == crime) {
+//	            crime = new Crime();
+//	        }
+//	        crime.setCrimeID(CrimeImage.getImageCrimeId().getCrimeID());
+//	        CrimeImage.setImageCrimeId(crime);
+	        CrimeImage_repo.save(crimeImage);
+	        return crimeImage.getCrimeImageID();
+
     }
 
-    public CrimeImage getCrimeImage(BigInteger Id)
+    public CrimeImage getCrimeImage(Long Id)
     {
         return CrimeImage_repo.findById(Id).get();
     }
 
-    public void deleteCrimeImage(BigInteger Id)
+    public void deleteCrimeImage(Long Id)
     {
         CrimeImage_repo.deleteById(Id);
+    }
+
+    public Long updateCrimeIamge(CrimeImage crimeImage,Long crimeImageId)
+    {
+        return crimeImageId;
     }
 }

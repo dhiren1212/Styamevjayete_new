@@ -14,26 +14,33 @@ import com.satyamevjayate.api.repo.PrisoningTypeRepository;
 public class PrisoningTypeServices {
 	
 	@Autowired
-	private PrisoningTypeRepository prisoningtype_repo;
+	private PrisoningTypeRepository prisoningTypeRepository;
 	
 	public List<PrisoningType> listAllPrisoningType()
 	{
-		return prisoningtype_repo.findAll();
+		return prisoningTypeRepository.findAll();
 	}
 	
-	public void savePrisoningType(PrisoningType prisoningtype)
+	public Long savePrisoningType(PrisoningType prisoningtype)
 	{
-		prisoningtype_repo.save(prisoningtype);
+		prisoningTypeRepository.save(prisoningtype);
+		return prisoningtype.getPrisoningTypeId();
+	}
+
+	public Long updatePrisoningType(PrisoningType prisoningtype,Long id)
+	{
+		prisoningTypeRepository.save(prisoningtype);
+		return id;
 	}
 	
-	public PrisoningType getPrisoningType(BigInteger Id)
+	public PrisoningType getPrisoningType(Long Id)
 	{
-		return prisoningtype_repo.findById(Id).get();
+		return prisoningTypeRepository.findById(Id).get();
 	}
 	
-	public void deletePrisoningType(BigInteger Id)
+	public void deletePrisoningType(Long Id)
 	{
-		prisoningtype_repo.deleteById(Id);
+		prisoningTypeRepository.deleteById(Id);
 	}
 	
 	
