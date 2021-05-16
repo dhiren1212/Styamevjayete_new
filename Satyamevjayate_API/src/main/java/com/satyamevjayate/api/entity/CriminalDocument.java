@@ -18,12 +18,8 @@ public class CriminalDocument {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="DocumentID")
     private Long documentID;
-//    @Column(name="CriminalID")
-//    private Long CriminalID;
-    
-    @OneToOne(optional=false)
-    @JoinColumn(name = "CriminalID")
-    private Criminal criminalDocument;
+    @Column(name="CriminalID")
+    private Long criminalID;
     
     @Column(name="DocumentType")
     private String documentType;

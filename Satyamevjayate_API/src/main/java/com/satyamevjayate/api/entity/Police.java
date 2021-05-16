@@ -21,7 +21,7 @@ public class Police {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PoliceID")
-	private BigInteger	policeID;
+	private Long	policeID;
 	
 	@Column(name="Pwd")
 	private String pwd;
@@ -29,30 +29,23 @@ public class Police {
 	@Column(name="PoliceCardImage")
 	private Byte[] policeCardImage;
 
-	@OneToOne(optional=false)
-	@JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
-	private Addresses policeResidentAddress;
+	@Column(name="ResidenceAddressID")
+	private String policeResidentAddress;
 
-	@OneToOne(optional=false)
-	@JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
+	@Column(name="PermanentAddressID")
 	private Addresses policePermanentAddress;
 	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "RoleID")
-    private PoliceRole policeRole;
+	@Column(name = "RoleID")
+    private String roleId;
 	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "ContactId")
-    private Contact policeContact;
+	@Column(name = "ContactID")
+    private String contactId;
 	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "PersonID")
-    private Person person;
-	
-	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "PoliceStationID")
-    private PoliceStation policeStation;
+	@Column(name = "PersonID")
+    private String personId;
+
+	@Column(name = "PoliceStationID")
+    private String policeStationId;
 	
 
 }

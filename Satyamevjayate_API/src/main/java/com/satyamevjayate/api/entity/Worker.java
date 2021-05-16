@@ -21,31 +21,25 @@ public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="WorkerID")
-    private BigInteger workerID;
+    private Long workerID;
+
     @Column(name="DateOfJoining")
     private Date dateOfJoining;
+
     @Column(name="DateOfResign")
     private Date dateOfResign;
 
+    @Column(name="ResidenceAddressID")
+    private Long workerResidentAddress;
 
-    @OneToOne(optional=false)
-    @JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
-    private Addresses workerResidentAddress;
+    @Column(name="PermanentAddressID")
+    private Long workerPermanentAddress;
 
-    @OneToOne(optional=false)
-    @JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
-    private Addresses workerPermanentAddress;
+
+    @Column( name = "ContactID")
+    private Long contactId;
 	
-	@OneToOne(optional=false)
-    @JoinColumn( name = "ContactID")
-    private Contact workerContact;
-	
-	@OneToOne(optional=false)
-    @JoinColumn(name = "PersonID")
-    private Person workerPerson;
-	
-	@OneToOne(mappedBy = "workerDocument")
-	@JsonIgnore
-	private WorkerDocument workerDocument;
+	@Column(name = "PersonID")
+    private Long personId;
 
 }

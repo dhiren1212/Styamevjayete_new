@@ -18,14 +18,11 @@ public class  CrimeImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeImageID")
-    private BigInteger crimeImageID;
-//    @Column(name="CrimeID")
-//    private BigInteger CrimeID;
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "CrimeId")
-    private Crime imageCrimeId;
-    
+    private Long crimeImageID;
+
+    @Column(name="CrimeID")
+    private Long CrimeID;
+
     @Column(name="CrimeImage")
     private Byte[] crimeImage;
 }

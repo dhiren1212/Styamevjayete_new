@@ -20,32 +20,16 @@ public class Criminal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CriminalID")
     private Long criminalID;
-//    @Column(name = "PersonID")
-//    private Long PersonID;
-//    @Column(name = "ContactID")
-//    private Long ContactID;
-//    @Column(name = "AddressID")
-//    private Long AddressID;
+    @Column(name = "PersonID")
+    private Long PersonID;
+    @Column(name = "ContactID")
+    private Long ContactID;
 
-    @OneToOne(optional=false)
-    @JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
-    private Addresses criminalResidentAddress;
+    @Column(name="ResidenceAddressID")
+    private Long criminalResidentAddressID;
 
-    @OneToOne(optional=false)
-    @JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
-    private Addresses criminalPermanentAddress;
-
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "ContactID")
-    private Contact criminalContact;
-	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "PersonID")
-    private Person criminalPerson;
-
-	@OneToOne(mappedBy = "criminalDocument")
-    @JsonIgnore
-    private CriminalDocument criminalDocument;
+    @Column(name="PermanentAddressID")
+    private Long criminalPermanentAddress;
 	
     @Column(name = "Height")
     private Long height;

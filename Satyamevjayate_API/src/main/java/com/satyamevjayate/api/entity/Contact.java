@@ -31,42 +31,12 @@ public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ContactId")
-	private BigInteger contactId;
-	
-	
-	
+	private Long contactId;
+
 	@Column(name="ContactNumber")
-	private BigInteger contactNumber;
+	private Long contactNumber;
 	
 	@Column(name="ContactEmail")
 	private String contactEmail;
-	
-	
-	@OneToOne(mappedBy = "policeContact")
-    @JsonIgnore
-    private Police policeContact;
-	
-	@OneToMany(mappedBy = "suspectContact")
-    @JsonIgnore
-    private List<CrimeSuspect> crimeSuspectContact;
-	
-	@OneToMany(mappedBy = "contact")
-    @JsonIgnore
-    private List<CrimeVictim> crimeVictimeContact;
-	
-	
-	@OneToMany(mappedBy = "criminalContact")
-    @JsonIgnore
-    private List<Criminal> criminalContact;
-	
-	
-	@OneToOne(mappedBy = "policeStationContact")
-    @JsonIgnore
-    private PoliceStation policeStationContact;
-	
-	@OneToOne(mappedBy = "workerContact")
-    @JsonIgnore
-    private Worker workerContact;
-	
 
 }

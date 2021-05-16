@@ -7,28 +7,29 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="formverification")
-public class FormVerfication {
+public class Formverification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="FormVerificationID")
-    private BigInteger formVerifiactionID;
+    private Long formVerifiactionID;
     @Column(name="ComplainerID")
-    private BigInteger complainerID;
+    private Long complainerID;
     @Column(name="PoliceID")
-    private BigInteger policeID;
+    private Long policeID;
     @Column(name="WorkerID")
-    private BigInteger workerID;
+    private Long workerID;
     @Column(name="ApplyDate")
-    private BigInteger applyDate;
+    private Date applyDate;
     @Column(name="VerifiedDate")
-    private BigInteger verifiedDate;
+    private Date verifiedDate;
     @Column(name="Status")
-    private BigInteger status;
+    private String status;
 
 }

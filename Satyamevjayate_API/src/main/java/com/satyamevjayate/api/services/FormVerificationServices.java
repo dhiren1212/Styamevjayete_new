@@ -1,6 +1,6 @@
 package com.satyamevjayate.api.services;
 
-import com.satyamevjayate.api.entity.FormVerfication;
+import com.satyamevjayate.api.entity.Formverification;
 import com.satyamevjayate.api.repo.FormVerificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,17 +11,17 @@ public class FormVerificationServices {
     @Autowired
     private FormVerificationRepository FormVerification_repo;
 
-    public List<FormVerfication> listAllFormVerification()
+    public List<Formverification> listAllFormVerification()
     {
         return FormVerification_repo.findAll();
     }
 
-    public void saveFormVerification(FormVerfication FormVerification)
+    public void saveFormVerification(Formverification FormVerification)
     {
         FormVerification_repo.save(FormVerification);
     }
 
-    public FormVerfication getFormVerification(BigInteger Id)
+    public Formverification getFormVerification(BigInteger Id)
     {
         return FormVerification_repo.findById(Id).get();
     }

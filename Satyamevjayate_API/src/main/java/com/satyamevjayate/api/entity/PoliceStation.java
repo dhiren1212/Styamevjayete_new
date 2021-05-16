@@ -20,26 +20,16 @@ public class PoliceStation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name="PoliceStationID")
-    private BigInteger policeStationID;
+    private Long policeStationID;
     @Column(name="StationName")
     private String stationName;
 
-
-
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "AddressID")
-    private Addresses policeStationAddress;
+    @Column(name = "AddressID")
+    private String addressID;
     
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "ContactID")
-    private Contact policeStationContact;
-    
-    
-    
-    @OneToOne(mappedBy = "policeStation")
-    @JsonIgnore
-    private Police policeStation;
+    @Column(name = "ContactID")
+    private String contactId ;
 
 
 }

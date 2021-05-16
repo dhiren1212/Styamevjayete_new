@@ -26,35 +26,21 @@ public class Crime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeID")
-    private BigInteger crimeID;
+    private Long crimeID;
     
     @Column(name="CrimeDate")
     private Date crimeDate;
+
     @Column(name="CrimeTime")
     private Date crimeTime;
+
     @Column(name="Description")
     private String description;
-  
-    @OneToOne(optional=false)
-    @JoinColumn(name = "AddressID")
-    private Addresses crimeAddress;
-    
-    @OneToOne(optional=false)
-    @JoinColumn(name = "CrimeTypeID")
-    private CrimeType crimeType;
-    
-    @OneToMany(mappedBy = "imageCrimeId")
-    @JsonIgnore
-    private List<CrimeImage> crimeImage;
-    
-//    @OneToMany(mappedBy = "SuspectCrimeId")
-//    @JsonIgnore
-//    private List<CrimeSuspect> crimeSuspect;
-//
-//    @OneToMany(mappedBy = "crimeVictimCrimeID")
-//    @JsonIgnore
-//    private List<CrimeVictim> crimeVictim;
-    
-   
+
+    @Column(name = "AddressID")
+    private Long  AddressID;
+
+    @Column(name="CrimeTypeID")
+    private Long CrimeTypeID;
 
 }

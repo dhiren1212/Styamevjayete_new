@@ -17,13 +17,10 @@ public class CrimeVictimDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="DocumentID")
-    private BigInteger documentID;
-
+    private Long documentID;
     
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "CrimeVictimId")
-    private CrimeVictim crimeVictimDocumentID;
+    @Column(name = "CrimeVictimID")
+    private Long crimeVictimDocumentID;
 
     @Column(name="DocumentType")
     private String documentType;

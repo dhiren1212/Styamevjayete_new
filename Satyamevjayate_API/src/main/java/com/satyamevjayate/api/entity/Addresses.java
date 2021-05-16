@@ -30,7 +30,7 @@ public class Addresses {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="AddressID")
-	private BigInteger addressID;
+	private Long addressID;
 	
 	@Column(name="AddressLine1")
 	private String addressLine1;
@@ -49,50 +49,5 @@ public class Addresses {
 	
 	@Column(name="Country")
 	private String country;
-
-	@OneToOne(mappedBy = "policeResidentAddress")
-	@JsonIgnore
-	private Police policeResidentAddress;
-
-	@OneToOne(mappedBy = "policePermanentAddress")
-	@JsonIgnore
-	private Police policePermanentAddress;
-
-	@OneToOne(mappedBy = "crimeAddress")
-    @JsonIgnore
-    private Crime crimeAddress;
-	
-	@OneToMany(mappedBy = "suspectAddress")
-    @JsonIgnore
-    private List<CrimeSuspect> crimeSuspect;
-	
-	@OneToMany(mappedBy = "addresses")
-    @JsonIgnore
-    private List<CrimeVictim> crimeVictime;
-	
-	
-	@OneToOne(mappedBy = "criminalResidentAddress")
-    @JsonIgnore
-    private Criminal criminalResidentAddress;
-
-	@OneToOne(mappedBy = "criminalPermanentAddress")
-	@JsonIgnore
-	private Criminal criminalPermanentAddress;
-	
-	@OneToOne(mappedBy = "policeStationAddress")
-    @JsonIgnore
-    private PoliceStation policeStationAddress;
-
-	@OneToOne(mappedBy = "workerResidentAddress")
-	@JsonIgnore
-	private Worker workerResidentAddress;
-
-	@OneToOne(mappedBy = "workerPermanentAddress")
-	@JsonIgnore
-	private Worker workerPermanentAddress;
-	
-	
-
-	
 
 }

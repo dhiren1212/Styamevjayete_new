@@ -19,30 +19,26 @@ public class CrimeVictim {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="CrimeVictimID")
-        private BigInteger crimeVictimID;
-
-        @ManyToOne(optional=false)
-        @JoinColumn(name = "AddressId")
-        private Addresses addresses;
+        private Long crimeVictimID;
 
         @Column(name = "CrimeId")
-        private Long CrimeID;
+        private Long crimeID;
         
-    	@ManyToOne(optional=false)
-        @JoinColumn(name = "ContactId")
-        private Contact contact;
+    	@Column(name = "ContactID")
+        private Long contactId;
     	
-    	@ManyToOne(optional=false)
-        @JoinColumn(name = "PersonID")
-        private Person person;
-        
-    	
-    	@OneToMany(mappedBy = "crimeVictimDocumentID")
-        @JsonIgnore
-        private List<CrimeVictimDocument> crimeVictimDocument;
-    	
+    	@Column(name = "PersonID")
+        private Long personId;
+
+        @Column(name = "ResidenceAddressID")
+        private Long ResidenceAddressID;
+
+        @Column(name = "PermanentAddressID")
+        private Long PermanentAddressID;
+
         @Column(name="Height")
         private Double height;
+
         @Column(name="Weight")
-        private BigInteger weight;
+        private Double weight;
 }

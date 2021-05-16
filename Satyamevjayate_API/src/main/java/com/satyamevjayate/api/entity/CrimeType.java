@@ -30,17 +30,9 @@ public class CrimeType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CrimeTypeID")
-	private BigInteger crimeTypeId;
+	private Long crimeTypeId;
 	
 	@Column(name="CrimeType")
 	private String crimeType;
-	
-	
-	@OneToOne(mappedBy = "crimeType")
-    @JsonIgnore
-    private Crime crimeId;
-	
-	
-	
 
 }

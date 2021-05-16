@@ -22,26 +22,21 @@ public class CrimeSuspect {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CrimeSuspectID")
-    private BigInteger crimeSuspectID;
+    private Long crimeSuspectID;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "AddressId")
-    private Addresses suspectAddress;
+    @Column(name = "ResidenceAddressID")
+    private Long ResidenceAddressID;
+
+    @Column(name = "PermanentAddressID")
+    private Long PermanentAddressID;
 
     @Column(name="CrimeID")
     private Long CrimeId;
     
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "ContactId")
-    private Contact suspectContact;
+	@Column(name = "ContactId")
+    private Long ContactID;
 	
-	@ManyToOne(optional=false)
-    @JoinColumn(name = "PersonID")
-    private Person suspectPerson;
-	
-	
-	 @OneToMany(mappedBy = "crimeSuspectDocument")
-	 @JsonIgnore
-	 private List<CrimeSuspectDocument> crimeSuspectDocument;
+	@Column(name = "PersonID")
+    private Long PersonID;
 
 }

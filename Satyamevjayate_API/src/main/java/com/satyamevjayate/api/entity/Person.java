@@ -21,7 +21,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PersonId")
-    private BigInteger personId;
+    private Long personId;
 
     @Column(name="FirstName")
     private String firstName;
@@ -37,27 +37,5 @@ public class Person {
 
     @Column(name="PersonImage")
     private byte[] personImage;
-
-    @OneToOne(mappedBy = "person")
-    @JsonIgnore
-    private Police police;
-    
-    @OneToMany(mappedBy = "suspectPerson")
-    @JsonIgnore
-    private List<CrimeSuspect> crimeSuspect;
-    
-    
-    @OneToMany(mappedBy = "person")
-    @JsonIgnore
-    private List<CrimeVictim> crimeVictim;
-    
-    @OneToMany(mappedBy = "criminalPerson")
-    @JsonIgnore
-    private List<Criminal> criminal;
-    
-    @OneToOne(mappedBy = "workerPerson")
-    @JsonIgnore
-    private Worker worker;
-    
 
 }

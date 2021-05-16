@@ -18,12 +18,10 @@ public class WorkerDocument {
     @Column(name="DocumentID")
     private Long documentID;
 
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "WorkerID")
-    private Worker workerDocument;
+    @Column(name = "WorkerID")
+    private Long workerId;
 
-    
+
     @Column(name="DocumentType")
     private String documentType;
     @Column(name="DocumentImage")
