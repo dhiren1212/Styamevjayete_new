@@ -44,9 +44,9 @@ public class CrimeImageController {
     }
 
     @PutMapping("/crimeImage/{id}")
-    public Long editCrimeImage(@RequestBody CrimeImage CrimeImage, @PathVariable Long id) {
+    public Long editCrimeImage(@RequestBody CrimeImage crimeImage, @PathVariable Long id) {
 
-        Long crimeImageId= crimeImageServices.saveCrimeImage(CrimeImage);
+        Long crimeImageId= crimeImageServices.updateCrimeIamge(crimeImage,id);
 
         return crimeImageId;
     }

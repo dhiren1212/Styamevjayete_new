@@ -52,7 +52,7 @@ public class ContactController {
 	@PutMapping("/contact/{id}")
 	public Long editContact(@RequestBody Contact contact, @PathVariable Long id) {
 
-		Long contactId= contactServices.saveContact(contact);;
+		Long contactId= contactServices.updateContact(contact,id);;
 		return contactId;
 	}
 	

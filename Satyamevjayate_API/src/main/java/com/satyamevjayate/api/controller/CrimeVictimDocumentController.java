@@ -45,9 +45,9 @@ public class CrimeVictimDocumentController {
     }
 
     @PutMapping("/crimevictimdocument/{id}")
-    public Long editCrimeVictimDocument(@RequestBody CrimeVictimDocument CrimeVictimDocument, @PathVariable BigInteger id) {
+    public Long editCrimeVictimDocument(@RequestBody CrimeVictimDocument CrimeVictimDocument, @PathVariable Long id) {
 
-        Long crimeVictimDocumentid= crimeVictimDocumentService.saveCrimeVictimDocument(CrimeVictimDocument);
+        Long crimeVictimDocumentid= crimeVictimDocumentService.updateCrimeVictimDocument(CrimeVictimDocument,id);
 
         return crimeVictimDocumentid;
     }

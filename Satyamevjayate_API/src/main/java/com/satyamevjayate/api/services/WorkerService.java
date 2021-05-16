@@ -1,17 +1,10 @@
 package com.satyamevjayate.api.services;
 
-import com.satyamevjayate.api.entity.Addresses;
-import com.satyamevjayate.api.entity.Contact;
-import com.satyamevjayate.api.entity.Person;
 import com.satyamevjayate.api.entity.Worker;
-import com.satyamevjayate.api.repo.AddressesRepository;
-import com.satyamevjayate.api.repo.ContactRepository;
-import com.satyamevjayate.api.repo.PersonRepository;
 import com.satyamevjayate.api.repo.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.List;
 @Service
 public class WorkerService {
@@ -29,7 +22,7 @@ public class WorkerService {
         Worker_repo.save(worker);
         return worker.getWorkerID();
     }
-    public Long editWorker(Worker worker)
+    public Long editWorker(Worker worker, Long id)
     {
         Worker_repo.save(worker);
         return worker.getWorkerID();

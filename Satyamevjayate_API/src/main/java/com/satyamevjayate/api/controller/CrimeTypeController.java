@@ -55,7 +55,7 @@ public class CrimeTypeController {
 	@PutMapping("/crimetype/{id}")
 	public Long editCrimeType(@RequestBody CrimeType crimetype, @PathVariable Long id) {
 
-		Long crimeTypeId=crimeTypeServices.saveCrimeType(crimetype);
+		Long crimeTypeId=crimeTypeServices.updateCrimeType(crimetype,id);
 
 		return crimeTypeId;
 	}

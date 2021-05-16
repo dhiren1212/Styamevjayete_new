@@ -21,44 +21,43 @@ import com.satyamevjayate.api.services.PoliceRoleServices;
 public class PoliceRoleContoller {
 
 	@Autowired
-	private PoliceRoleServices Police_Role_Service;
+	private PoliceRoleServices policeRoleServices;
 
 	@GetMapping("/policerole")
 	public List<PoliceRole> getAllPolice_Role() {
-		return Police_Role_Service.listAll_Police_Role();
+		return policeRoleServices.listAllPoliceRole();
 	}
 	
 	@GetMapping("/policerole/{id}")
-	public PoliceRole getPoliceRole(@PathVariable BigInteger id)
+	public PoliceRole getPoliceRole(@PathVariable Long id)
 	{
-		PoliceRole p= Police_Role_Service.getPolice_Role(id);
+		PoliceRole p= policeRoleServices.getPoliceRole(id);
 		return p;
 	}
 	
 	@PostMapping("/policerole")
-	public String addPoliceRole(@RequestBody PoliceRole p)
+	public Long addPoliceRole(@RequestBody PoliceRole p)
 	{
-		Police_Role_Service.save_Police_Role(p);
-		return "PoliceRole Add successfully";
+		Long roleID=policeRoleServices.savePoliceRole(p);
+
+		return roleID;
 		
 	}
 	
 	@DeleteMapping("/policerole/{id}")
-	public String deletePoliceRole(@PathVariable BigInteger id)
+	public String deletePoliceRole(@PathVariable Long id)
 	{
-		Police_Role_Service.delete_PoliceRole(id);
+		policeRoleServices.delete_PoliceRole(id);
 		return "PoliceRole Delete successfully";
 	}
 	
 	@PutMapping("/policerole/{id}")
-	public ResponseEntity<Object> editPoliceRole(@RequestBody PoliceRole policerole, @PathVariable BigInteger id) {
+	public Long editPoliceRole(@RequestBody PoliceRole policerole, @PathVariable Long id) {
 
 		
-		policerole.setRoleID(id);
-		
-		Police_Role_Service.save_Police_Role(policerole);
+		Long roleID=policeRoleServices.editPoliceRole(policerole,id);
 
-		return ResponseEntity.noContent().build();
+		return roleID;
 	}
 
 }

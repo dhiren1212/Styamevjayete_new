@@ -47,7 +47,7 @@ public class WorkerDocumentController {
     @PutMapping("/workerdocument/{id}")
     public Long editWorkerDocument(@RequestBody WorkerDocument WorkerDocument, @PathVariable Long id) {
 
-       Long workerDocumentId=workerDocumentServices.saveWorkerDocument(WorkerDocument);
+       Long workerDocumentId=workerDocumentServices.updateWorkerDocument(WorkerDocument,id);
 
         return workerDocumentId;
     }

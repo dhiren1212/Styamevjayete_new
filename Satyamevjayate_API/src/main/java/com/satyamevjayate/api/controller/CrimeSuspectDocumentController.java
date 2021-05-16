@@ -45,7 +45,7 @@ public class CrimeSuspectDocumentController {
     @PutMapping("/crimesuspectdocument/{id}")
     public Long editCrimeSuspectDocument(@RequestBody CrimeSuspectDocument crimeSuspectDocument, @PathVariable Long id) {
 
-        Long documentID=crimeSuspectDocumentServices.saveCrimeSuspectDocument(crimeSuspectDocument);
+        Long documentID=crimeSuspectDocumentServices.updateCrimeSuspectDocument(crimeSuspectDocument,id);
 
         return documentID;
     }

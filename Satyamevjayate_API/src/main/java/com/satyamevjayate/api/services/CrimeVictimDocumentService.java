@@ -35,7 +35,7 @@ public class CrimeVictimDocumentService {
         CrimeVictimDocument_repo.deleteById(Id);
     }
 
-    public Long updateCrimeVictimDocument(CrimeVictimDocument crimeVictimDocument)
+    public Long updateCrimeVictimDocument(CrimeVictimDocument crimeVictimDocument, Long id)
     {
         CrimeVictimDocument_repo.save(crimeVictimDocument);
         return crimeVictimDocument.getCrimeVictimDocumentID();

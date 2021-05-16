@@ -33,7 +33,7 @@ public class PersonServices {
     {
         person_repository.deleteById(Id);
     }
-    public Long updatePerson(Person person)
+    public Long updatePerson(Person person,Long id)
     {
         person_repository.save(person);
         return person.getPersonId();

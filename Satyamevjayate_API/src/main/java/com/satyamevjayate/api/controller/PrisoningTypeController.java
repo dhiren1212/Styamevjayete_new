@@ -53,7 +53,7 @@ public class PrisoningTypeController {
 	@PutMapping("/prisoningtype/{id}")
 	public Long editPrisoningType(@RequestBody PrisoningType prisoningtype, @PathVariable Long id) {
 
-		Long prisoningtypeId= prisoningTypeServices.savePrisoningType(prisoningtype);
+		Long prisoningtypeId= prisoningTypeServices.updatePrisoningType(prisoningtype,id);
 
 		return prisoningtypeId;
 	}

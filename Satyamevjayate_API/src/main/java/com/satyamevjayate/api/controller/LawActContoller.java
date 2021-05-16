@@ -56,7 +56,7 @@ public class LawActContoller {
 	@PutMapping("/EditLawAct/{id}")
 	public Long editLawAct(@RequestBody LawAct lawact , @PathVariable Long id)
 	{
-		Long lawID=lawActServices.saveLawAct(lawact);
+		Long lawID=lawActServices.updateLawAct(lawact,id);
 		return lawID;
 	}
 	

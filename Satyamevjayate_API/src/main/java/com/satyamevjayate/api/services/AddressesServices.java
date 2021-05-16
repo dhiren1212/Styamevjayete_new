@@ -37,10 +37,10 @@ public class AddressesServices {
 		Address_repo.deleteById(Id);
 	}
 
-	public Long saveAddress(Addresses address,Long addressId)
+	public Long updateAddress(Addresses address,Long addressId)
 	{
-//		Address_repo.save(address);
-		return  address.getAddressID();
+		Address_repo.save(address);
+		return  addressId;
 	}
 
 }

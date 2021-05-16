@@ -2,10 +2,8 @@ package com.satyamevjayate.api.controller;
 import com.satyamevjayate.api.entity.Worker;
 import com.satyamevjayate.api.services.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -28,7 +26,7 @@ public class WorkerController {
     @PostMapping("/worker")
     public Long addWorker(@RequestBody Worker w)
     {
-        Long workerID= workerService.editWorker(w);
+        Long workerID= workerService.saveWorker(w);
 
         return workerID;
 
@@ -45,7 +43,7 @@ public class WorkerController {
     public Long  editWorker(@RequestBody Worker Worker, @PathVariable Long id) {
 
 
-        Long workerID= workerService.editWorker(Worker);
+        Long workerID= workerService.editWorker(Worker,id);
 
         return workerID;
     }

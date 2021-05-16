@@ -42,9 +42,9 @@ private CrimeSuspectServices crimeSuspectServices;
     }
 
     @PutMapping("/crimesuspect/{id}")
-    public Long  editCrimeSuspect(@RequestBody CrimeSuspect CrimeSuspect, @PathVariable Long id) {
+    public Long  editCrimeSuspect(@RequestBody CrimeSuspect crimeSuspect, @PathVariable Long id) {
 
-        Long crimeSuspectID=crimeSuspectServices.saveCrimeSuspect(CrimeSuspect);
+        Long crimeSuspectID=crimeSuspectServices.updateCrimeSuspect(crimeSuspect,id);
 
         return crimeSuspectID;
     }

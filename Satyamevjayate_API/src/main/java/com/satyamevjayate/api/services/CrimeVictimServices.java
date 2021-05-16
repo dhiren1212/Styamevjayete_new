@@ -62,7 +62,7 @@ public class CrimeVictimServices {
         }
         return res;
     }
-    public Long updateCrimeVictim(CrimeVictim crimeVictim)
+    public Long updateCrimeVictim(CrimeVictim crimeVictim,Long id)
     {
         CrimeVictim_repo.save(crimeVictim);
         return crimeVictim.getCrimeVictimID();

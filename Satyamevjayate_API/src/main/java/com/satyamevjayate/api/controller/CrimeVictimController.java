@@ -48,7 +48,7 @@ public class CrimeVictimController {
 
         crimeVictim.setCrimeVictimID(id);
 
-        Long crimeVictimId= crimeVictimServices.saveCrimeVictim(crimeVictim);
+        Long crimeVictimId= crimeVictimServices.updateCrimeVictim(crimeVictim,id);
         return crimeVictimId;
 
     }

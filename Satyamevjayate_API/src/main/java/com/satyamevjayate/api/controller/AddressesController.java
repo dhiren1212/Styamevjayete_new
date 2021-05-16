@@ -51,7 +51,7 @@ public class AddressesController {
 	
 	@PutMapping("/address/{id}")
 	public Long editAddress(@RequestBody Addresses address, @PathVariable Long id) {
-		Long addressId= address_Services.saveAddress(address);
+		Long addressId= address_Services.updateAddress(address,id);
 		return addressId;
 	}
 	

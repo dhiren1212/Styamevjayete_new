@@ -11,43 +11,42 @@ import java.util.List;
 @RestController
 public class PoliceStationController {
     @Autowired
-    private PoliceStationServices PoliceStationService;
+    private PoliceStationServices policeStationServices;
 
     @GetMapping("/GetAllPoliceStation")
     public List<PoliceStation> getAllPolice_Role() {
-        return PoliceStationService.listAllPoliceStation();
+        return policeStationServices.listAllPoliceStation();
     }
 
     @GetMapping("/GetPoliceStation/{id}")
-    public PoliceStation getPoliceStation(@PathVariable BigInteger id)
+    public PoliceStation getPoliceStation(@PathVariable Long id)
     {
-        PoliceStation p= PoliceStationService.getPoliceStation(id);
+        PoliceStation p= policeStationServices.getPoliceStation(id);
         return p;
     }
 
     @PostMapping("/AddPoliceStation")
-    public String addPoliceStation(@RequestBody PoliceStation p)
+    public Long addPoliceStation(@RequestBody PoliceStation p)
     {
-        PoliceStationService.savePoliceStation(p);
-        return "PoliceStation Add successfully";
+        Long policeStationID=policeStationServices.savePoliceStation(p);
+
+        return policeStationID;
 
     }
 
     @DeleteMapping("/DeletePoliceStation/{id}")
-    public String deletePoliceStation(@PathVariable BigInteger id)
+    public String deletePoliceStation(@PathVariable Long id)
     {
-        PoliceStationService.deletePoliceStation(id);
+        policeStationServices.deletePoliceStation(id);
         return "PoliceStation Delete successfully";
     }
 
     @PutMapping("/EditPoliceStation/{id}")
-    public ResponseEntity<Object> editPoliceStation(@RequestBody PoliceStation PoliceStation, @PathVariable BigInteger id) {
+    public Long editPoliceStation(@RequestBody PoliceStation policeStation, @PathVariable Long id) {
 
 
-        PoliceStation.setPoliceStationID(id);
+        Long policeStationID=policeStationServices.updatePoliceStation(policeStation,id);
 
-        PoliceStationService.savePoliceStation(PoliceStation);
-
-        return ResponseEntity.noContent().build();
+        return policeStationID;
     }
 }

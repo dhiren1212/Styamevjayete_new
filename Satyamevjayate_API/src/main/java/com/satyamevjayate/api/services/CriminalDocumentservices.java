@@ -1,9 +1,7 @@
 package com.satyamevjayate.api.services;
 
-import com.satyamevjayate.api.entity.Criminal;
 import com.satyamevjayate.api.entity.CriminalDocument;
 import com.satyamevjayate.api.repo.CriminalDocumentRepository;
-import com.satyamevjayate.api.repo.CriminalRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +34,7 @@ public class CriminalDocumentservices {
         CriminalDocument_repo.deleteById(Id);
     }
 
-    public Long updateCriminalDocument(CriminalDocument criminalDocument)
+    public Long updateCriminalDocument(CriminalDocument criminalDocument,Long id)
     {
         CriminalDocument_repo.save(criminalDocument);
         return criminalDocument.getCriminalID();
