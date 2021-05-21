@@ -45,7 +45,8 @@ public class CrimeSuspectServices {
 
     public CrimeSuspect saveCrimeSuspect(CrimeSuspect CrimeSuspect)
     {
-		address_repo.save(CrimeSuspect.getSuspectAddress());
+		address_repo.save(CrimeSuspect.getSuspectResidentAddress());
+		address_repo.save(CrimeSuspect.getSuspectPermanentAddress());
 		contact_repo.save(CrimeSuspect.getSuspectContact());
 		person_repo.save(CrimeSuspect.getSuspectPerson());
 		return CrimeSuspect_repo.save(CrimeSuspect);

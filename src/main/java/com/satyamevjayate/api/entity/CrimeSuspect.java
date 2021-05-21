@@ -24,9 +24,14 @@ public class CrimeSuspect {
     @Column(name="CrimeSuspectID")
     private BigInteger crimeSuspectID;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "AddressId")
-    private Addresses suspectAddress;
+    @OneToOne(optional=false)
+    @JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
+    private Addresses suspectResidentAddress;
+
+    @OneToOne(optional=false)
+    @JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)
+    private Addresses suspectPermanentAddress;
+
 
     @Column(name="CrimeID")
     private Long CrimeId;

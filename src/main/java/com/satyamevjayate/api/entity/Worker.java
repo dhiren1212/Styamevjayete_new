@@ -21,7 +21,7 @@ public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="WorkerID")
-    private BigInteger workerID;
+    private Long workerID;
     @Column(name="DateOfJoining")
     private Date dateOfJoining;
     @Column(name="DateOfResign")
@@ -43,9 +43,5 @@ public class Worker {
 	@OneToOne(optional=false)
     @JoinColumn(name = "PersonID")
     private Person workerPerson;
-	
-	@OneToOne(mappedBy = "workerDocument")
-	@JsonIgnore
-	private WorkerDocument workerDocument;
 
 }

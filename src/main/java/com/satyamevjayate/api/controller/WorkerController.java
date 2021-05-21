@@ -41,12 +41,12 @@ public class WorkerController {
     }
 
     @PutMapping("/worker/{id}")
-    public ResponseEntity<Object> editWorker(@RequestBody Worker Worker, @PathVariable BigInteger id) {
+    public ResponseEntity<Object> editWorker(@RequestBody Worker Worker, @PathVariable Long id) {
 
 
         Worker.setWorkerID(id);
 
-        WorkerService.editWorker(Worker);
+        WorkerService.editWorker(Worker, id);
 
         return ResponseEntity.noContent().build();
     }

@@ -11,6 +11,7 @@ import com.satyamevjayate.api.repo.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Lob;
 import java.math.BigInteger;
 import java.util.List;
 @Service
@@ -41,42 +42,8 @@ public class WorkerService {
         person_repo.save(worker.getWorkerPerson());
        return Worker_repo.save(worker);
     }
-    public Worker editWorker(Worker worker)
+    public Worker editWorker(Worker worker, Long Id)
     {
-//    	Addresses address = address_repo.findById(worker.getWorkerAddress().getAddressID()).orElse(null);
-//        if (null == address) {
-//        	   address = new Addresses();
-//        }
-//        address.setAddressLine1(worker.getWorkerAddress().getAddressLine1());
-//        address.setAddressLine2(worker.getWorkerAddress().getAddressLine2());
-//        address.setCity(worker.getWorkerAddress().getCity());
-//        address.setCountry(worker.getWorkerAddress().getCountry());
-//        address.setState(worker.getWorkerAddress().getState());
-//        address.setZipcode(worker.getWorkerAddress().getZipcode());
-//
-//        worker.setWorkerAddress(address);
-//
-//    Contact contact=contact_repo.findById(worker.getWorkerContact().getContactId()).orElse(null);
-//    	if(null==contact)
-//    	{
-//    		contact=new Contact();
-//    	}
-//    	contact.setContactNumber(worker.getWorkerContact().getContactNumber());
-//	    contact.setContactEmail(worker.getWorkerContact().getContactEmail());
-//
-//	    worker.setWorkerContact(contact);
-//
-//	Person person = person_repo.findById(worker.getWorkerPerson().getPersonId()).orElse(null);
-//        if (null == person) {
-//        	 person = new Person();
-//        }
-//        person.setFirstName(worker.getWorkerPerson().getFirstName());
-//        person.setLastName(worker.getWorkerPerson().getLastName());
-//        person.setGender(worker.getWorkerPerson().getGender());
-//        person.setDateOfBirth(worker.getWorkerPerson().getDateOfBirth());
-//        person.setPersonImage(worker.getWorkerPerson().getPersonImage());
-//        worker.setWorkerPerson(person);
-//
        return Worker_repo.save(worker);
     }
 

@@ -41,7 +41,8 @@ public class CrimeVictimServices {
 
     public CrimeVictim saveCrimeVictim(CrimeVictim CrimeVictim)
     {
-		address_repo.save(CrimeVictim.getAddresses());
+		address_repo.save(CrimeVictim.getVictimResidentAddress());
+		address_repo.save(CrimeVictim.getVictimPermanentAddress());
 		contact_repo.save(CrimeVictim.getContact());
 		person_repo.save(CrimeVictim.getPerson());
         return CrimeVictim_repo.save(CrimeVictim);

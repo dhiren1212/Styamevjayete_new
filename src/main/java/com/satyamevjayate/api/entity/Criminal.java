@@ -29,7 +29,7 @@ public class Criminal {
 
     @OneToOne(optional=false)
     @JoinColumn(name="ResidenceAddressID", referencedColumnName = "AddressID",insertable = false,updatable = false)
-    private Addresses criminalResidentAddressID;
+    private Addresses criminalResidentAddress;
 
     @OneToOne(optional=false)
     @JoinColumn(name="PermanentAddressID",referencedColumnName = "AddressID",insertable = false,updatable = false)

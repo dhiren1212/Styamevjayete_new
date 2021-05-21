@@ -30,10 +30,10 @@ public class WorkerDocumentController {
     }
 
     @PostMapping("/workerdocument")
-    public String addWorkerDocument(@RequestBody WorkerDocument WorkerDocument)
+    public Long addWorkerDocument(@RequestBody WorkerDocument WorkerDocument)
     {
-        WorkerDocumentServices.saveWorkerDocument(WorkerDocument);
-        return "WorkerDocument Add Successfully";
+        Long workerDocumentId=WorkerDocumentServices.saveWorkerDocument(WorkerDocument);
+        return workerDocumentId;
     }
 
 
@@ -45,11 +45,11 @@ public class WorkerDocumentController {
     }
 
     @PutMapping("/workerdocument/{id}")
-    public ResponseEntity<Object> editWorkerDocument(@RequestBody WorkerDocument WorkerDocument, @PathVariable Long id) {
+    public Long editWorkerDocument(@RequestBody WorkerDocument WorkerDocument, @PathVariable Long id) {
 
 //        WorkerDocument.set
-        WorkerDocumentServices.saveWorkerDocument(WorkerDocument);
+        Long workerDocumentId=WorkerDocumentServices.updateWorkerDocument(WorkerDocument,id);
 
-        return ResponseEntity.noContent().build();
+        return workerDocumentId;
     }
 }

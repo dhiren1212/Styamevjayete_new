@@ -61,14 +61,22 @@ public class Addresses {
 	@OneToOne(mappedBy = "crimeAddress")
     @JsonIgnore
     private Crime crimeAddress;
-	
-	@OneToMany(mappedBy = "suspectAddress")
-    @JsonIgnore
-    private List<CrimeSuspect> crimeSuspect;
-	
-	@OneToMany(mappedBy = "addresses")
-    @JsonIgnore
-    private List<CrimeVictim> crimeVictime;
+
+	@OneToOne(mappedBy = "suspectResidentAddress")
+	@JsonIgnore
+	private CrimeSuspect suspectResidentAddress;
+
+	@OneToOne(mappedBy = "suspectPermanentAddress")
+	@JsonIgnore
+	private CrimeSuspect suspectPermanentAddress;
+
+	@OneToOne(mappedBy = "victimResidentAddress")
+	@JsonIgnore
+	private CrimeVictim victimResidentAddress;
+
+	@OneToOne(mappedBy = "victimPermanentAddress")
+	@JsonIgnore
+	private CrimeVictim victimPermanentAddress;
 	
 	
 	@OneToOne(mappedBy = "criminalResidentAddress")

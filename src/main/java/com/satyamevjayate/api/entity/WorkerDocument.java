@@ -19,9 +19,8 @@ public class WorkerDocument {
     private Long documentID;
 
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "WorkerID")
-    private Worker workerDocument;
+
+    private Long workerId;
 
     
     @Column(name="DocumentType")
